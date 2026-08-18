@@ -6,6 +6,9 @@
 !/data/
 !/src/
 
+# Local-only tooling that belongs with the manuscript rather than the analysis
+/src/paper/
+
 
 # Python build products inside the two tracked trees
 __pycache__/

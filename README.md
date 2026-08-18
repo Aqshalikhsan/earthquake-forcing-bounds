@@ -92,7 +92,6 @@ src/
   seismicity/    b-value
   forecasting/   ETAS reference and operational skill
   unified/       the shared framework, described below
-  paper/         figure generation
 ```
 
 The framework lives in `src/unified/`:
@@ -132,7 +131,6 @@ python src/unified/resolution_test.py    # what averaging costs
 python src/unified/positive_control.py   # what the framework can detect
 python src/unified/ml_perevent.py        # matched case-control learning
 python src/tidal/ide_bvalue_test.py      # size-frequency form of the tidal claim
-python src/paper/make_figures.py         # figures for the manuscript
 ```
 
 Seven raw arrays exceed the GitHub file-size limit of 100 MB and are therefore
