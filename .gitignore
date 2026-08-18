@@ -1,7 +1,8 @@
-# Everything is ignored by default; only data/, src/ and README.md are tracked.
+# Everything is ignored by default; only the four entries below are tracked.
 /*
 !/.gitignore
 !/README.md
+!/docs/
 !/data/
 !/src/
 
