@@ -62,6 +62,14 @@ automatically; the rest are noted as manual.
 Radon is absent from the study and this is a gap in the available data rather
 than a result. No global archive of soil-gas radon monitoring exists.
 
+## Further documentation
+
+| document | contents |
+| --- | --- |
+| [docs/INDEX.md](docs/INDEX.md) | folder map, one table per family, what each script does |
+| [docs/METHODS.md](docs/METHODS.md) | eleven problems in this kind of study and the remedy used for each |
+| [docs/CONCLUSIONS.md](docs/CONCLUSIONS.md) | what was found, what is still open, and the methodological lessons |
+
 ## What is in this repository
 
 `data/` holds the aligned inputs and every results file the manuscript quotes.
