@@ -194,15 +194,3 @@ resolution of a global catalogue: a dense local network reaching magnitude 2 to
 3 measures b-values far better than is possible here, and crustal strain from
 GNSS, which measures the quantity that actually loads a fault, was not
 available.
-
-## Manuscript
-
-The manuscript is in `template/els-cas-templates/els-cas-templates/`, in
-Elsevier `cas-sc` format. Build it with:
-
-```
-pdflatex forcing_bounds_cas_sc
-bibtex   forcing_bounds_cas_sc
-pdflatex forcing_bounds_cas_sc
-pdflatex forcing_bounds_cas_sc
-```
