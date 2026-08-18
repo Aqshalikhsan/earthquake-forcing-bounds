@@ -62,6 +62,105 @@ automatically; the rest are noted as manual.
 Radon is absent from the study and this is a gap in the available data rather
 than a result. No global archive of soil-gas radon monitoring exists.
 
+## Machine learning
+
+All of the published claims this work examines are learned models, so the same
+question is asked with a learner as well as with a resampling test. Two designs
+are used, and the difference between them is resolution.
+
+The **daily** design learns from the 130-variable bank, one row per day for the
+whole planet, which is the representation the published work uses. The
+**per-event** design gives the learner the resolution the fields actually have,
+because averaging a spatial field to one value per day leaves under 2% of the
+local variation.
+
+### The matched design
+
+Each of 3,533 mainshocks is paired with ten control days **at its own grid
+cell**, offset by whole years so the day of year is preserved, and drawn in
+plus and minus pairs so the two classes have the same mean date. A control day
+must carry no M 5 event within 100 km and 30 days.
+
+Over the whole set the two classes differ in mean date by 143 days in a
+55-year record. Location, season and catalogue growth are therefore held fixed
+by construction, and cannot be what the model learns.
+
+That also fixes the right metric. Area under the ROC curve compares every row
+with every other row, which throws the matching away: a control in a quiet cell
+in 1998 gets ranked against a case in an active cell in 2015, and the model is
+rewarded for telling those apart, which is geography. The question the design
+actually supports is narrower. Of the eleven days an earthquake could have
+fallen on, at the same place and in the same season, does the model rank the
+real one first? Chance is 10.3%.
+
+### Result
+
+Three expanding-window folds, 706 events per test fold. AUC is reported
+alongside for comparability with the published claims.
+
+| Feature block | Real day ranked first | p | AUC | Change in AUC from the split alone |
+| --- | --- | --- | --- | --- |
+| Local fields | 6.1% | 0.996 | 0.4616 | +0.065 |
+| Local fields plus tidal | 6.3% | 0.991 | 0.4633 | +0.049 |
+| Global daily bank | 0.0% | 1.000 | 0.3228 | +0.208 |
+| All forcings | 0.0% | 1.000 | 0.3234 | +0.207 |
+| **Seismicity (reference)** | **31.0%** | **below 0.001** | **0.6222** | **-0.008** |
+
+No block of forcings beats chance. The seismicity reference, in the same folds
+with the same model, reaches three times chance. Taken one field at a time
+every family sits inside the band traced by shuffled labels, from OLR at AUC
+0.470 to tidal phase at 0.510.
+
+### Why the null is believable
+
+**Calibration.** Moving the case label to a random member of each pool, which
+is the exact null of the matched design, gives AUC 0.4950 over five
+repetitions, in the range 0.477 to 0.506. A departure from chance elsewhere is
+therefore a measurement, not a defect.
+
+**Positive control.** A known fraction of events is moved onto the most extreme
+field day inside its own pool and the whole analysis is refitted. Nothing
+synthetic is added to the field; only days and values that really occurred are
+used.
+
+| Events moved onto an extreme field day | Real day ranked first | p |
+| --- | --- | --- |
+| 0% (the real data) | 9.1% | 0.994 |
+| 5% | 9.8% | 0.959 |
+| 10% | 11.3% | 0.551 |
+| **20%** | **14.7%** | **0.001** |
+| 40% | 21.2% | below 0.001 |
+| 100% | 59.3% | below 0.001 |
+
+So the bound this learner supports is: any effect that re-times more than about
+a fifth of earthquakes onto extreme field days would have been caught. Nothing
+was. Note that this is **looser** than the resampling bound of 5%, which is why
+the learner is reported as a cross-check rather than as the sharper test.
+
+### A diagnostic worth reusing
+
+The most useful number above is not any AUC but the last column. On identical
+rows and an identical model, the seismicity reference moves by 0.008 AUC
+between chronological and random validation, while the global forcing bank
+moves by 0.208. A real signal is nearly indifferent to how the data are split;
+an artefact of the calendar is not.
+
+Ridge regression recovers the date of a row from the 130 global variables at R
+squared 0.99, which is the mechanism. Under a random split the model can locate
+a test day in time and recall the local rate. Under a chronological split the
+same features fall outside their training range and the mapping inverts, which
+is why the global bank scores 0.3228, below chance rather than at it.
+
+This suggests a check that costs nothing and that we recommend to anyone
+reporting a precursor from a learned model. Refit the identical model under
+both splits. A signal that survives one and not the other is a property of the
+partition, not of the Earth.
+
+Everything above is produced by `src/unified/ml_perevent.py` and written to
+`data/results/ml_perevent.txt`. The assembled feature matrix is committed as
+`data/results/ml_features_mw6.0_c10.npz`, so the results can be reproduced
+without rebuilding the tidal block, which is the slow part.
+
 ## Further documentation
 
 | document | contents |
