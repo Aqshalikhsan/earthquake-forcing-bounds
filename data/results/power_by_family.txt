@@ -1,0 +1,30 @@
+
+==============================================================================
+DAYA PER KELUARGA: nol yang sungguhan, atau sekadar data kurang?
+==============================================================================
+
+  katalog induk  GCMT Mw>=6.0, dangkal, declustered: 3,533 gempa
+                 1976-01-01 .. 2026-03-22
+
+  keluarga       rentang  gempa dlm  terpakai  % katalog  terdeteksi
+                 (tahun)    rentang                       (sd medan)
+  --------------------------------------------------------------------
+  ATMOSPHERE          55      3,436     3,372        95%       0.048
+  IONOSPHERE          27      1,908     1,907        54%       0.064
+  HYDRO               24      1,734     1,504        43%       0.072
+
+==============================================================================
+MEMBACA TABEL INI
+==============================================================================
+
+  'gempa dlm rentang'  berapa gempa yang JATUH di dalam periode datanya
+  'terpakai'           berapa yang benar-benar tersampel di selnya sendiri
+  Kalau kedua angka itu berdekatan, cakupannya GLOBAL dan yang membatasi
+  adalah PANJANG REKAMAN, bukan keluasan wilayah.
+
+  'terdeteksi' adalah pergeseran sistematis terkecil yang masih tertangkap,
+  dalam satuan simpangan baku medan itu sendiri. Makin kecil, makin kuat
+  nolnya. Angka 0,05 berarti: pergeseran sebesar 5% sd tidak akan terlewat,
+  jadi nol di situ adalah nol yang sungguhan. Angka 0,15 berarti hanya efek
+  besar yang tertangkap, dan nol di situ belum memutuskan apa-apa.
+

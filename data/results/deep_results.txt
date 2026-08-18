@@ -1,0 +1,43 @@
+C:\Users\User\Documents\lunar-earthquake\src\unified\deep_test.py:109: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:839.)
+  tot += float(loss) * xb.shape[0]
+==============================================================================
+LSTM SUNGGUHAN PADA DATA NYATA — arsitektur yang dipakai paper
+==============================================================================
+  hari 20,089   laju dasar 28.89%
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  SKY 130 | ETAS 8 | BOTH 138   urutan 30 hari
+  split temporal : latih 14,033 -> uji 5,997 (ke DEPAN)
+  split acak     : latih 14,042 -> uji 6,018 (tercampur)
+==============================================================================
+HASIL
+==============================================================================
+  model                          AUC temporal     AUC acak
+  ----------------------------------------------------------
+  SKY (130 gaya luar)                  0.5086       0.5374
+  ETAS (seismologi)                    0.5368       0.5648
+  BOTH                                 0.4948       0.5890
+==============================================================================
+VONIS
+==============================================================================
+  AUC 0,50 = lempar koin.
+  LSTM pada gaya luar, split temporal : 0.5086
+  LSTM pada gaya luar, split acak     : 0.5374
+  selisih hanya karena cara membagi   : +0.0289
+  sumbangan langit di atas ETAS       : -0.0420 AUC
+  Arsitektur bukan penyebabnya. Model ini melihat SELURUH 30 hari terakhir
+  dari 130 variabel sekaligus -- ia sanggup menangkap penumpukan, laju
+  perubahan, dan interaksi antar keluarga yang tidak bisa diwakili model
+  satu-hari. Dengan semua keleluasaan itu, hasil temporalnya tetap di
+  sekitar lempar koin.
+  Yang berubah drastis hanyalah CARA MEMBAGI DATA, pada model dan data yang
+  sama persis. Itulah selisih yang memisahkan hasil di sini dari hasil yang
+  dilaporkan paper-paper tersebut.

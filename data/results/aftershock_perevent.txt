@@ -1,0 +1,41 @@
+==============================================================================
+GEMPA SUSULAN, DIBACA DI LOKASINYA SENDIRI
+==============================================================================
+  induk       Mw >= 6.0 dangkal, Gardner-Knopoff : 3,696
+  susulan     Mw >= 5.0 dangkal, di dalam jendela  : 10,420
+  jeda        median 87 hari, maks 1034
+  rentang     1976-01-15 .. 2026-03-27
+    ATMOSPHERE   siap  (9,842 susulan tercakup)
+    IONOSPHERE   siap  (7,432 susulan tercakup)
+    HYDRO        siap  (6,206 susulan tercakup)
+    null: 49 offset tahunan x +/-15 hari = 1,519 pergeseran (musim tetap)
+==============================================================================
+HASIL PER KELUARGA  (di episentrum susulan, bukan rerata global)
+==============================================================================
+  Diuji pada 10,420 gempa susulan dari 3,696 gempa induk.
+  'p' sudah terkoreksi untuk seluruh variabel dalam keluarga.
+  keluarga      n susulan variabel         z maks        p
+  ------------------------------------------------------------
+  ATMOSPHERE        9,842 atm_level          1.52    0.327
+  IONOSPHERE        7,432 ion_abs            0.98    0.587
+  HYDRO             6,206 hyd_level          2.21    0.077
+  TIDAL            10,371 phase(Schuster)       --    0.612
+                          R/n = 0.0069
+==============================================================================
+KOREKSI GABUNGAN: min-p lintas keluarga
+==============================================================================
+    keluarga diuji    : 4
+    min-p data asli   : 0.0767
+    min-p pada null   : median 0.1628, minimum 0.0000
+    p TERKOREKSI      : 0.273
+==============================================================================
+CATATAN
+==============================================================================
+  Ini gabungan dua syarat yang selama ini tidak pernah dipenuhi bersamaan:
+  sesar yang sudah kritis (zona susulan), dan gaya yang dibaca di tempat sesar
+  itu berada. Kalau di sini pun nol, tidak tersisa rancangan yang lebih
+  menguntungkan bagi hipotesis gaya luar dalam kerangka ini.
+  Sampling kausal tetap ditegakkan untuk medan terukur. Pasang surut
+  dikecualikan karena dihitung dari ephemeris, bukan diukur, sehingga tidak
+  mungkin membawa jejak gempa -- itulah sebabnya uji Schuster memakai fase
+  pada waktu kejadian, sebagaimana lazim di literatur pasang surut.

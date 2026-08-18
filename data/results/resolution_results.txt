@@ -1,0 +1,73 @@
+
+==============================================================================
+UJI RESOLUSI: berapa banyak sinyal yang dibunuh perataan global?
+==============================================================================
+
+  medan     tekanan NCEP, 20,089 hari x 939 sel
+  detrend   rerata berjalan 30 hari per sel (buang ketinggian+musim)
+
+  lokal     sd   555.7 Pa
+  global    sd    56.2 Pa   <- setelah dirata-rata 939 sel
+
+  gempa     M>=6,0 dangkal, declustered: 4,334
+
+==============================================================================
+RETENSI: seberapa banyak variasi lokal yang dibawa variabel global?
+==============================================================================
+
+    anomali di atas episentrum  vs  rerata global hari yang sama
+
+      korelasi        r = +0.1327
+      variasi terbawa r^2 = 1.76%
+      terbuang            98.24%
+
+  Artinya efek lokal sebesar E muncul di variabel bank sebagai ~0.133 E.
+  Untuk mendeteksinya butuh sekitar 57x lebih banyak data.
+
+==============================================================================
+DAYA: efek sekecil apa yang bisa ditemukan tiap rancangan?
+==============================================================================
+
+  Efek pemicu berukuran diketahui ditulis ke medan tekanan NYATA, waktu gempa
+  diundi ulang mengikutinya, lalu kedua rancangan disuruh mencarinya.
+  Lokasi gempa dan medannya tetap asli; hanya waktunya yang diundi.
+
+  beta   = kekuatan pemicu (kenaikan laju per 1 sd anomali lokal)
+  deteksi= persen dari 40 simulasi yang mencapai p<0,05
+
+    beta   modulasi lokal   PER-EVENT   GLOBAL-HARIAN
+  ------------------------------------------------------
+     0.0               0%          2%              5%
+     0.1               5%        100%              5%
+     0.2              10%        100%              8%
+     0.4              20%        100%             12%
+     0.8              40%        100%             50%
+     1.6              80%        100%             70%
+
+==============================================================================
+ARTINYA
+==============================================================================
+
+  Variabel bank hanya membawa 1.8% variasi lokal. Sisanya dibuang
+  sebelum uji apa pun dijalankan.
+
+  EMPAT keluarga terkena ini, karena forcingnya bersifat lokal:
+    ATMOSPHERE  939 sel   -> 1 angka/hari
+    HYDRO       grid GRACE-> 1 angka/hari
+    IONOSPHERE  5.183 sel -> 1 angka/hari
+    TIDAL       dihitung di SATU situs acuan (palung Jawa), bukan di episentrum
+  Hasil nol keempatnya di uji terpadu TIDAK boleh dibaca sebagai "tidak ada
+  efek" -- rancangannya memang hampir buta terhadap efek lokal.
+
+  EMPAT keluarga lain memang global, jadi perataan tidak membuang apa pun dan
+  batas atasnya sah apa adanya:
+    LUNAR (fase, deklinasi, jarak), PLANETARY (sudut), ROTATION (LOD, kutub),
+    SOLAR (Kp, F10.7, bintik) -- semuanya sama untuk seluruh Bumi pada hari
+    yang sama.
+
+  Untuk keempat keluarga medan, pendalaman yang berarti bukan menambah variabel
+  melainkan menaikkan resolusi: uji per-gempa di lokasinya sendiri, seperti
+  yang sudah dilakukan pressure_test.py, grace_hydro2.py, tidal_analysis.py
+  dan tec_test.py -- tetapi keempatnya belum pernah disatukan dalam satu null
+  dan satu koreksi seperti unified_test.py melakukannya untuk variabel global.
+

@@ -1,0 +1,68 @@
+==============================================================================
+KEUNIKAN PER VARIABEL: tiap metrik diuji SENDIRI-SENDIRI
+==============================================================================
+  katalog  global M>=6,0, 1970-01-01 .. 2024-12-31
+  hari     20,089   laju dasar 28.89%
+  ekstrem  desil teratas / terbawah (10%)
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  130 variabel x 3 bentuk = 390 uji
+==============================================================================
+HASIL PER KELUARGA  (dikoreksi untuk variabel x bentuk keluarga itu)
+==============================================================================
+  keluarga      n uji   z maks        p  bentuk  variabel terbaik
+  ------------------------------------------------------------------------
+  LUNAR            39     2.05    0.632  EKOR    moon_h1_cos
+  TIDAL            24     2.85    0.055  BAWAH   ocean_load_abs
+  PLANETARY       240     3.02    0.280  BAWAH   pl_helio_Mars_Jupiter
+  SOLAR            27     2.14    0.167  BAWAH   sol_sunspot
+  HYDRO            24     2.14    0.335  EKOR    hyd_semiannual_sin
+  ROTATION         15     2.30    0.165  BAWAH   rot_lod_abs
+  ATMOSPHERE       12     1.32    0.828  EKOR    atm_anom_absmean
+  IONOSPHERE        9     1.24    0.677  EKOR    ion_tec_absmean
+==============================================================================
+SEPULUH VARIABEL TERDEKAT, apa pun keluarganya
+==============================================================================
+  'selisih' = peluang variabel itu ekstrem pada hari gempa DIKURANGI peluangnya
+  ekstrem pada hari tenang. Nol berarti ekstremnya tidak ada hubungan dengan
+  gempa. 'p sendiri' belum dikoreksi -- ia diberikan supaya terlihat bahwa
+  angka mentah pun tidak mencolok.
+  variabel                     bentuk    selisih      z  p sendiri
+  ------------------------------------------------------------------
+  pl_helio_Mars_Jupiter        BAWAH      -1.66%   3.02      0.004
+  ocean_load_abs               BAWAH       1.30%   2.85      0.004
+  pl_aspectcount_tol3          ATAS        1.37%   2.71      0.008
+  pl_geo_Venus_Mars            BAWAH      -1.25%   2.65      0.006
+  pl_geo_Venus_Uranus          ATAS        1.25%   2.52      0.011
+  pl_aspectcount_tol2          ATAS        1.23%   2.48      0.011
+  pl_geo_Venus_Mars            EKOR       -1.69%   2.45      0.011
+  rot_lod_abs                  BAWAH       1.54%   2.30      0.019
+  pl_aspectcount_tol2          EKOR        1.38%   2.14      0.035
+  sol_sunspot                  BAWAH       1.66%   2.14      0.029
+==============================================================================
+KOREKSI GABUNGAN: seluruh 130 variabel x 3 bentuk
+==============================================================================
+    total uji         : 390
+    terbaik data asli : z = 3.02  (pl_helio_Mars_Jupiter, BAWAH)
+    terbaik pada null : rata-rata z = 2.93, maks 4.65
+    p TERKOREKSI      : 0.349
+==============================================================================
+CATATAN
+==============================================================================
+  Bentuk EKOR adalah yang paling berdaya kalau efeknya simetris: tegangan
+  puncak tekan dan puncak tarik sama-sama menyimpang dari keadaan rata-rata,
+  dan uji yang hanya mencari "nilai tinggi menaikkan laju" akan memecah efek
+  simetris ke dua desil lalu menganggap keduanya tidak meyakinkan. Di sini
+  keduanya digabung, sehingga kalau ada efek semacam itu, ia terlihat.
+  Bandingkan dengan signature_test.py: di sana 130 variabel dijumlahkan, jadi
+  efek yang hanya ada di satu-dua variabel akan tenggelam oleh 128 lainnya.
+  Di sini tidak ada penjumlahan sama sekali -- tiap variabel berdiri sendiri,
+  dan harga pencariannya dibayar lewat null yang menyapu seluruh 390 uji
+  pada setiap pergeseran.

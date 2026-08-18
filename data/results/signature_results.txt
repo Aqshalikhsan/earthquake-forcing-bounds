@@ -1,0 +1,54 @@
+==============================================================================
+TANDA TANGAN GABUNGAN: apakah banyak metrik memuncak BERSAMAAN?
+==============================================================================
+  katalog  global M>=6,0, 1970-01-01 .. 2024-12-31
+  hari     20,089   laju dasar 28.89%
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  130 variabel dari 8 keluarga
+  KEBETULAN   rata-rata 26.0 dari 130 variabel ekstrem per hari
+  KELUARGA    rata-rata 5.59 dari 8 keluarga
+  MAHALANOBIS median 102.5
+==============================================================================
+HASIL
+==============================================================================
+  'hari gempa' dan 'hari tenang' adalah rata-rata statistik itu di kedua
+  kelompok. 'p' sudah terkoreksi untuk keempat statistik sekaligus.
+  statistik                       hari gempa  hari tenang      z        p
+  ------------------------------------------------------------------------
+  KEBETULAN (n var ekstrem)            26.18        25.93   0.96    0.791
+  KELUARGA (n keluarga ekstrem)         5.62         5.58   0.60    0.951
+  PUNCAK (|z| terbesar)                 1.40         1.40   0.30    0.996
+  MAHALANOBIS (jarak gabungan)        102.91       102.97   0.15    1.000
+==============================================================================
+UJI EKOR: apakah hari 'paling aneh' lebih sering bergempa?
+==============================================================================
+  Kalau tanda tangannya nyata, ia paling terlihat di ujung: hari dengan
+  paling banyak variabel ekstrem seharusnya paling sering bergempa.
+  persentil         ambang    n hari   laju gempa   vs dasar
+  ------------------------------------------------------------
+  >= p50                 26    10,184       29.97%     1.037x
+  >= p75                 30     5,420       30.18%     1.045x
+  >= p90                 34     2,395       29.73%     1.029x
+  >= p95                 37     1,090       30.28%     1.048x
+  >= p99                 42       203       31.03%     1.074x
+==============================================================================
+VONIS
+==============================================================================
+  p terkecil setelah koreksi : 0.791
+  TIDAK ADA tanda tangan gabungan yang lolos.
+  Uji ini menanyakan hal yang tidak ditanyakan classifier. Pohon keputusan dan
+  LSTM mencari WILAYAH di ruang variabel tempat laju gempa lebih tinggi.
+  Kebetulan berbeda sifatnya: ia bisa muncul di mana saja di ruang itu, tidak
+  harus melibatkan variabel yang sama tiap kali, dan tampak sebagai hari yang
+  ANEH -- bukan hari yang berada di suatu tempat tertentu.
+  Kolom 'vs dasar' di uji ekor adalah bacaan yang paling langsung: kalau hari
+  dengan paling banyak metrik ekstrem tidak lebih sering bergempa daripada hari
+  biasa, maka tidak ada kebetulan yang bisa dijadikan dasar peringatan.

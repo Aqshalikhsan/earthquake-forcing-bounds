@@ -1,0 +1,118 @@
+
+==============================================================================
+HOW MUCH EARTHQUAKE FORECASTING SKILL ACTUALLY EXISTS?
+==============================================================================
+
+  region     Indonesia and surrounding arc (13S-8N, 93E-143E)
+  catalogue  USGS ComCat, M >= 5.0, 1990-01-01 to 2026-08-15
+  events     9937   train 7330   test 2607
+  test span  2016-01-01 onward, 3880 days
+
+  estimating background seismicity density (adaptive kernel) ...
+  fitting temporal ETAS ...
+  fitting spatio-temporal ETAS ...
+
+    temporal   mu=0.468/d  K=0.0266  a=1.49  c=0.1054  p=1.500
+    spatial    mu=0.506/d  K=0.0153  a=1.49  c=0.0273  p=1.226
+               D=8.2 km  gamma=0.52  q=2.16
+
+==============================================================================
+INFORMATION GAIN PER EARTHQUAKE (CSEP standard)
+==============================================================================
+
+  How many times more likely does each model make the sequence that actually
+  happened, per earthquake? A gain of G nats means exp(G) times more likely.
+  All models share the same spatial background, so this isolates the question
+  of what predicts WHEN, and for ETAS-ST also WHERE.
+
+  model                       log-likelihood   gain/event  x more likely
+  ------------------------------------------------------------------------
+  POISSON (benchmark)               -42428.8       0.0000           1.00
+  LUNAR h4 (SSGEOS form)            -42424.5       0.0017           1.00  [A=+0.082]
+  LUNAR h2 (tidal form)             -42424.5       0.0016           1.00  [A=+0.080]
+  LUNAR h1                          -42423.3       0.0021           1.00  [A=-0.090]
+  ETAS temporal                     -41695.5       0.2814           1.32
+  ETAS spatio-temporal              -37720.3       1.8068           6.09
+
+  ETAS-ST is worth 1.81 nats per earthquake: each observed earthquake is
+  6x more probable under it than under the time-independent benchmark.
+  The best lunar model -- fitted on the test data with amplitude and phase both
+  free -- is worth 0.0021 nats, i.e. 1.002x.
+
+  Skill ratio: about 863 to 1.
+
+==============================================================================
+THE OPERATIONAL NUMBER: AFTERSHOCK FORECASTS, VERIFIED
+==============================================================================
+
+  The number an operational centre actually publishes: after a large event, how
+  many M>=5 earthquakes to expect within 50 km over the next 7 days.
+  Every M>=6.5 mainshock in the test period, forecast from parameters fitted
+  only on pre-2016 data:
+
+    mainshocks tested            62
+    forecast by ETAS-ST               106 aftershocks
+    forecast by background alone      1.8 aftershocks
+    OBSERVED                          288 aftershocks
+
+    ETAS-ST is off by a factor of 2.72
+    the time-independent baseline is off by a factor of 161
+
+  So the elevated risk after a mainshock is not a vague warning -- it is a
+  number, and it verifies. The background model underestimates what follows a
+  mainshock by roughly 161x, which is exactly the margin that matters
+  when deciding whether to send people back into a damaged building.
+
+  Set against that, the lunar model's best case is a rate change of
+  9.0%, i.e. x1.09. It moves a 1-in-1000 day to 1-in-917.
+  There is no decision anywhere that turns on that difference.
+
+
+==============================================================================
+ALARM PERFORMANCE (MOLCHAN DIAGRAM)
+==============================================================================
+
+  Issue an alarm wherever and whenever the forecast rate exceeds a threshold.
+  What fraction of the coming earthquakes does that catch, for what fraction of
+  the space-time volume kept under alert? The space-time volume is sampled by
+  Monte Carlo, since a full grid over 3880 days would be unnecessary.
+  Random guessing lies on the diagonal.
+
+   volume on alert    ETAS-ST     LUNAR   background    random
+  ----------------------------------------------------------------
+               1%     45.6%     23.0%       23.2%       1%
+               5%     67.4%     52.0%       52.3%       5%
+              10%     78.4%     67.4%       67.7%      10%
+              20%     91.2%     87.0%       87.0%      20%
+              50%     99.3%     99.0%       99.0%      50%
+
+  Read the last three columns together. All of them, lunar included, share the
+  same map of where earthquakes happen -- that is where most of the apparent
+  skill comes from, and it is just history, not prediction. The lunar column
+  sits on top of the background column because a few-percent modulation adds
+  nothing to it. ETAS-ST is the only one that pulls away, and it does so by
+  reacting to earthquakes that have already occurred.
+
+==============================================================================
+WHAT THIS BUYS, AND WHAT IT DOES NOT
+==============================================================================
+
+  REAL, and operational today:
+    * after a large earthquake, a quantified and verifiable expected number of
+      aftershocks at a specific place -- 161x what a time-independent model
+      would say, and accurate to a factor of 2.7 on real test data.
+      This is what USGS, INGV, GNS and BMKG issue.
+    * timescales of hours to weeks, which is enough for operational decisions:
+      shelter occupancy, re-entry, crane and scaffolding work, school closure.
+
+  NOT AVAILABLE, from this or any other method:
+    * the date of the next large earthquake on a quiet fault
+    * magnitude and location in advance
+    * any warning whatsoever before the FIRST event of a sequence -- and that
+      first event is usually the one that kills people.
+
+  The gap between those two lists is not a software problem. It is why the
+  effort that actually saves lives in Indonesia goes into building codes,
+  early warning (seconds, from the P wave), tsunami warning (minutes), and
+  preparedness -- not into forecasting the date.
+

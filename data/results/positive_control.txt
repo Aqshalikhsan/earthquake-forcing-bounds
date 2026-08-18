@@ -1,0 +1,53 @@
+==============================================================================
+KONTROL POSITIF: apakah pipeline ini SANGGUP menemukan sinyal?
+==============================================================================
+  hari       20,089
+  laju dasar 28.89% per hari
+  metode     statistik, binning dan null PERSIS dari unified_test.py
+  ulangan    20 per tingkat, null 300 pergeseran melingkar
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  130 variabel, 8 keluarga
+  membangun ambang null per keluarga:
+    50/300
+    100/300
+    150/300
+    200/300
+    250/300
+    300/300
+==============================================================================
+HASIL: seberapa besar sinyal yang harus ada agar tertangkap?
+==============================================================================
+  Angka di sel = persen dari 20 percobaan yang mencapai p < 0,05.
+  Kolom beta=0 adalah kontrol alarm palsu: harus di sekitar 5%, tidak lebih.
+  keluarga      var      0%      5%     10%     20%     40%
+  -------------------------------------------------------
+  LUNAR          13      5%     45%    100%    100%    100%
+  TIDAL           8      0%     40%    100%    100%    100%
+  PLANETARY      80      0%      0%      0%     95%    100%
+  SOLAR           9      0%      0%     55%    100%    100%
+  HYDRO           8      0%      0%      0%     85%    100%
+  ROTATION        5      0%      0%      0%     95%    100%
+  ATMOSPHERE      4      5%     35%    100%    100%    100%
+  IONOSPHERE      3      0%      0%     50%    100%    100%
+==============================================================================
+ARTINYA
+==============================================================================
+  Baca kolom beta=0 lebih dulu. Kalau ia di sekitar 5%, nullnya terkalibrasi:
+  kerangka ini TIDAK menciptakan temuan dari ketiadaan.
+  Lalu baca ke kanan. Tingkat beta terkecil yang sudah tertangkap hampir
+  selalu adalah batas kepekaan kerangka ini. Sinyal apa pun yang lebih besar
+  dari itu MUSTAHIL terlewat.
+  Bandingkan dengan klaim yang dipublikasikan: AUC 0,99 atau R-kuadrat di atas
+  0,9 setara dengan modulasi yang jauh lebih besar daripada kolom paling kanan
+  di tabel ini. Kalau modulasi 10% saja tertangkap setiap kali, modulasi
+  sebesar itu tidak mungkin tidak terlihat.
+  Jadi selisih antara hasil di sini dan hasil di paper-paper itu bukan soal
+  kepekaan alat. Alatnya lebih peka daripada yang dibutuhkan.

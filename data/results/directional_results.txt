@@ -1,0 +1,58 @@
+
+==============================================================================
+DIRECTIONAL (V-) TEST AGAINST THE PHYSICALLY PREDICTED PHASE
+==============================================================================
+
+  H0  earthquake times are uniform in tidal phase
+  H1  excess at 0 deg, the maximum of ocean-loaded Coulomb stress
+  one-sided, Bonferroni over 5 subsets -> significant at p < 0.010
+
+  computing ocean-loaded tidal phases ...
+    tidal stress: 250/9024 events    tidal stress: 500/9024 events    tidal stress: 750/9024 events    tidal stress: 1000/9024 events    tidal stress: 1250/9024 events    tidal stress: 1500/9024 events    tidal stress: 1750/9024 events    tidal stress: 2000/9024 events    tidal stress: 2250/9024 events    tidal stress: 2500/9024 events    tidal stress: 2750/9024 events    tidal stress: 3000/9024 events    tidal stress: 3250/9024 events    tidal stress: 3500/9024 events    tidal stress: 3750/9024 events    tidal stress: 4000/9024 events    tidal stress: 4250/9024 events    tidal stress: 4500/9024 events    tidal stress: 4750/9024 events    tidal stress: 5000/9024 events    tidal stress: 5250/9024 events    tidal stress: 5500/9024 events    tidal stress: 5750/9024 events    tidal stress: 6000/9024 events    tidal stress: 6250/9024 events    tidal stress: 6500/9024 events    tidal stress: 6750/9024 events    tidal stress: 7000/9024 events    tidal stress: 7250/9024 events    tidal stress: 7500/9024 events    tidal stress: 7750/9024 events    tidal stress: 8000/9024 events    tidal stress: 8250/9024 events    tidal stress: 8500/9024 events    tidal stress: 8750/9024 events    tidal stress: 9000/9024 events    tidal stress: 9024/9024 events                                                              subset                                       n        V   implied         p
+  ----------------------------------------------------------------------------
+  all submarine                             7909  +0.0100    +2.00%    0.1041
+  submarine megathrust (thrust, dip<=30)    1987  +0.0069    +1.39%    0.3309
+  submarine thrust, any dip                 3100  +0.0140    +2.80%    0.1348
+  submarine strike-slip                     3802  +0.0143    +2.86%    0.1063
+  strongest-tide quartile (>2445 Pa)        1977  +0.0259    +5.19%    0.0515
+
+  Smallest p across the family: 0.0515 (strongest-tide quartile (>2445 Pa)).
+  Nothing clears the corrected threshold of 0.010.
+
+  Note what the V column means: a value of +0.0259 corresponds to a
+  sinusoidal modulation of earthquake rate with tidal phase of about
+  5.2%. Even taken at face value and ignoring the
+  correction, that is a rate modulation, not a prediction: it shifts the odds of
+  an event by a fraction of a percent per tidal cycle in a population of
+  thousands of earthquakes, and says nothing about when or where the next one
+  happens.
+
+
+==============================================================================
+POSITIVE CONTROL FOR THE OCEAN-LOADED PIPELINE
+==============================================================================
+
+  control set: 1987 submarine megathrusts
+    locating maxima: 250/1987    locating maxima: 500/1987    locating maxima: 750/1987    locating maxima: 1000/1987    locating maxima: 1250/1987    locating maxima: 1500/1987    locating maxima: 1750/1987    locating maxima: 1987/1987                                                                tidal stress: 250/1987 events    tidal stress: 500/1987 events    tidal stress: 750/1987 events    tidal stress: 1000/1987 events    tidal stress: 1250/1987 events    tidal stress: 1500/1987 events    tidal stress: 1750/1987 events    tidal stress: 1987/1987 events                                                            
+  every event moved onto its ocean-loaded dCFS maximum:
+    recovered mean direction : 0.00 deg   (expected 0.00)
+    concentration R/n        : 1.0000
+    Schuster p               : 0.00e+00
+    V-test V                 : +1.0000   p = 0.00e+00
+    verdict                  : PASS
+
+==============================================================================
+CLOSING POSITION
+==============================================================================
+
+  The ocean-loaded pipeline recovers a planted signal at the predicted phase, so
+  its null results are measurements. Across every subset tested -- including the
+  submarine megathrusts where the published literature reports its positive
+  findings, and with the more powerful directional test -- no tidal modulation
+  reaches significance in this catalogue.
+
+  The bound from validate.py stands: any real body- or ocean-tide triggering of
+  shallow earthquakes is at the few-percent level at most. That is compatible
+  with the published literature and incompatible with the idea that lunar or
+  planetary geometry can anticipate an individual earthquake.
+

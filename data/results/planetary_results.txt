@@ -1,0 +1,125 @@
+
+==============================================================================
+QUESTION 1: CAN THE PLANETARY CLAIM FAIL AT ALL?
+==============================================================================
+
+  SSGEOS treats conjunction (0), 45, 90, 135 and opposition (180) as critical,
+  applied across planet pairs. With 7 planets that is 21 pairs and
+  105 target angles. How much of the calendar does that cover?
+
+  Days from 2000-2025 (9497 days) containing at least one such aspect:
+
+    tolerance    geocentric   heliocentric
+  ------------------------------------------
+   +/-0.5 deg        38.5%         38.7%
+     +/-1 deg        63.9%         63.9%
+     +/-2 deg        89.5%         89.0%
+     +/-3 deg        97.6%         97.7%
+     +/-5 deg       100.0%        100.0%
+
+  A hypothesis that flags most of the calendar as critical cannot be wrong, and
+  therefore cannot be right either. In the transcript, eight of eleven days in
+  the forecast window were called critical -- this is why. It is not deception;
+  it is what happens when you allow five aspect angles across twenty-one pairs.
+
+
+==============================================================================
+QUESTION 2: TESTED PROPERLY ANYWAY
+==============================================================================
+
+  13148 shallow Mw>=5.5 earthquakes, 1976-2020 (Global CMT)
+
+  A warning that applies to this test and to every test like it. Schuster's
+  p-value assumes the events are an independent sample from a uniform clock.
+  An earthquake catalogue is neither: it clusters into aftershock sequences, its
+  completeness improves over decades, and it carries a seasonal reporting cycle.
+  Mercury and Venus never stray far from the Sun as seen from Earth, so their
+  angles track the year; Jupiter-Saturn moves so slowly that any 45-year trend
+  aliases straight into it. Run the textbook test on raw data and it reports
+  p = 0.0000 for half the sky -- all of it an artefact.
+
+  So the null has to be built from the catalogue itself. Events are declustered,
+  then the whole sequence is circularly shifted in time by a random offset a
+  thousand times over. That preserves every bit of the catalogue's internal
+  structure -- clustering, trend, seasonality -- while destroying any genuine
+  relationship to planetary phase. The calibrated p-value is the fraction of
+  shifts that match or beat the real one.
+
+  declustered: 13148 -> 9024 mainshocks
+  Monte Carlo shifts: 1000
+  significance threshold after correction: p < 0.00208
+
+  planet pair           harmonic    naive p   CALIBRATED p
+  ------------------------------------------------------------
+  Venus-Neptune                8     0.8506          0.971
+  Venus-Neptune                4     0.0480          0.577
+  Venus-Neptune                2     0.4575          0.503
+  Venus-Saturn                 8     0.0987          0.401
+  Venus-Saturn                 4     0.3513          0.634
+  Venus-Saturn                 2     0.0323          0.933
+  Mercury-Mars                 8     0.0000          0.417
+  Mercury-Mars                 4     0.0000          0.946
+  Mercury-Mars                 2     0.0000          0.739
+  Mercury-Jupiter              8     0.0000          0.008
+  Mercury-Jupiter              4     0.0242          0.829
+  Mercury-Jupiter              2     0.0000          0.028
+  Venus-Mercury                8     0.0000          0.725
+  Venus-Mercury                4     0.0000          0.482
+  Venus-Mercury                2     0.0000          0.528
+  Mars-Uranus                  8     0.4292          0.946
+  Mars-Uranus                  4     0.0001          0.117
+  Mars-Uranus                  2     0.0000          0.184
+  Jupiter-Saturn               8     0.0395          0.541
+  Jupiter-Saturn               4     0.0026          0.334
+  Jupiter-Saturn               2     0.0000          0.966
+  Venus-Jupiter                8     0.3196          0.668
+  Venus-Jupiter                4     0.0016          0.477
+  Venus-Jupiter                2     0.0000          0.772
+
+  smallest calibrated p over all 24 tests: 0.008 (Mercury-Jupiter h8)
+  does not clear the corrected threshold of 0.00208
+
+  Compare the two p-value columns. Every one of the naive "detections" was the
+  catalogue's own time structure being read as planetary influence. This is not
+  a hypothetical failure mode -- it is the exact error that makes celestial
+  earthquake correlations look convincing, and it is why the calibrated column
+  is the only one worth reading.
+
+==============================================================================
+THE HELIOCENTRIC ALIGNMENT CLAIM
+==============================================================================
+
+  The transcript's central mechanism is "Earth closely aligned between Venus and
+  Neptune", and "the largest earthquakes often happened when Earth was aligned
+  between planets". That is a specific, testable statement: the Sun-Earth-planet
+  or planet-Earth-planet angle should matter. Testing the strongest form --
+  Earth within a few degrees of the line joining two planets:
+
+  alignment                   events aligned   expected   rate ratio
+  --------------------------------------------------------------------
+  Earth between Venus-Neptune               2.87%     2.80%        1.02x
+  Earth between Venus-Saturn                2.60%     2.17%        1.20x
+  Earth between Mercury-Jupiter               1.83%     2.26%        0.81x
+
+  A ratio of 1.00 means earthquakes happen during those alignments exactly as
+  often as the alignments occur. That is what "no effect" looks like.
+
+
+==============================================================================
+WHAT CAN AND CANNOT BE SETTLED
+==============================================================================
+
+  Testable, and tested: the specific angle claims above. They show nothing.
+
+  Not testable as stated: "critical geometry" spanning five aspects across
+  twenty-one pairs, with multi-day windows and no location or magnitude. That
+  version is not false -- it is unfalsifiable, which is worse, because no
+  observation can ever count against it.
+
+  Settled by measurement, not assumption: the Moon exerts 20 million times the
+  tidal force of Venus and a billion times that of Neptune. Nine thousand
+  earthquakes, a validated pipeline, ocean loading included -- and the Moon's
+  own effect is bounded below a few percent and never reaches significance. Any
+  planetary effect is bounded by that number divided by ten million. It is not
+  that we lack the data. There is no room left for it to hide.
+

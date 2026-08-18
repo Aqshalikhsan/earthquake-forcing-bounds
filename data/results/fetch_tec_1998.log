@@ -1,0 +1,35 @@
+  9,862 hari, 5 proses paralel, disimpan per tahun
+  bagian: C:\Users\User\Documents\lunar-earthquake\data\ionosphere\_parts
+
+  1998  341 hari   total 365/9,862  7 mnt  sisa ~192 mnt
+  1999  340 hari   total 730/9,862  15 mnt  sisa ~188 mnt
+  2000  349 hari   total 1,096/9,862  23 mnt  sisa ~182 mnt
+  2001  345 hari   total 1,461/9,862  30 mnt  sisa ~175 mnt
+  2002  341 hari   total 1,826/9,862  39 mnt  sisa ~173 mnt
+  2003  347 hari   total 2,191/9,862  46 mnt  sisa ~163 mnt
+  2004  346 hari   total 2,557/9,862  53 mnt  sisa ~152 mnt
+  2005  340 hari   total 2,922/9,862  59 mnt  sisa ~141 mnt
+  2006  334 hari   total 3,287/9,862  66 mnt  sisa ~132 mnt
+  2007  345 hari   total 3,652/9,862  72 mnt  sisa ~123 mnt
+  2008  338 hari   total 4,018/9,862  78 mnt  sisa ~114 mnt
+  2009  337 hari   total 4,383/9,862  85 mnt  sisa ~106 mnt
+  2010  344 hari   total 4,748/9,862  91 mnt  sisa ~98 mnt
+  2011  340 hari   total 5,113/9,862  98 mnt  sisa ~91 mnt
+  2012  345 hari   total 5,479/9,862  105 mnt  sisa ~84 mnt
+  2013  347 hari   total 5,844/9,862  114 mnt  sisa ~78 mnt
+  2014  345 hari   total 6,209/9,862  123 mnt  sisa ~72 mnt
+  2015  342 hari   total 6,574/9,862  130 mnt  sisa ~65 mnt
+  2016  342 hari   total 6,940/9,862  137 mnt  sisa ~58 mnt
+  2017  341 hari   total 7,305/9,862  144 mnt  sisa ~50 mnt
+  2018  346 hari   total 7,670/9,862  151 mnt  sisa ~43 mnt
+  2019  342 hari   total 8,035/9,862  157 mnt  sisa ~36 mnt
+  2020  342 hari   total 8,401/9,862  163 mnt  sisa ~28 mnt
+  2021  337 hari   total 8,766/9,862  170 mnt  sisa ~21 mnt
+  2022  346 hari   total 9,131/9,862  177 mnt  sisa ~14 mnt
+  2023  340 hari   total 9,496/9,862  186 mnt  sisa ~7 mnt
+  2024  348 hari   total 9,862/9,862  194 mnt  sisa ~0 mnt
+
+  selesai: 9250/9862 hari
+  grid    : (9250, 71, 73)  (192 MB)
+  TEC     : median 14.1 TECU, maks 113.3
+  tersimpan: tec_daily.npy, tec_days.npy

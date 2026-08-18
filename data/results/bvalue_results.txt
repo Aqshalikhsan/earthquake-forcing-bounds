@@ -1,0 +1,38 @@
+==============================================================================
+NILAI-B SEBELUM GEMPA BESAR: prekursor yang paling kredibel
+==============================================================================
+  katalog     GCMT dangkal              : 58,382
+  di atas Mc=5.2                        : 29,027
+  gempa induk Mw>=6.0 (declustered) : 3,694
+  rentang     1976-01-01 .. 2026-03-31
+  Mc dipatok 5.2, tidak dicocokkan per jendela -- Mc yang dicocokkan akan
+  bergerak bersama jumlah gempa dan menciptakan tren b palsu.
+==============================================================================
+HASIL
+==============================================================================
+  'b sebelum'  rata-rata nilai-b di jendela sebelum gempa induk
+  'b kontrol'  tempat yang SAMA, waktu lain (49 offset tahunan +/-15 hari)
+  'p'          dua sisi, dari sebaran kontrol
+   radius  jendela      n  b sebelum  b kontrol   selisih        p
+  ------------------------------------------------------------------
+    150 km     90d  data tidak cukup
+    150 km    180d     64      0.813      0.791    +0.022    0.603
+    150 km    365d    117      0.839      0.821    +0.019    0.557
+    300 km     90d     92      0.754      0.776    -0.022    0.590
+    300 km    180d    153      0.805      0.818    -0.013    0.650
+    300 km    365d    446      0.858      0.881    -0.023    0.070
+==============================================================================
+VONIS
+==============================================================================
+  Bonferroni atas 6 kombinasi radius x jendela -> ambang p < 0.0083
+  TIDAK ADA yang lolos koreksi.
+  Kalau nilai-b memang turun sebelum gempa, kolom 'selisih' harus NEGATIF dan
+  konsisten di seluruh baris. Tanda yang berganti-ganti antar radius atau
+  jendela adalah tanda derau, bukan fisika.
+  Batas yang berlaku: ini menguji apa yang terlihat di katalog momen-tensor
+  GLOBAL dengan Mc=5.2. Jaringan lokal yang lengkap sampai M2-3 mengukur b jauh
+  lebih baik, dan nol di sini tidak menutup kemungkinan itu. Yang ditutup
+  adalah klaim bahwa penurunan b terlihat secara global tanpa jaringan padat.
+  Catatan kategori: nilai-b BUKAN gaya luar. Ia dihitung dari katalog gempa
+  itu sendiri, jadi tempatnya di sisi pembanding bersama ETAS -- bukan di
+  antara kedelapan keluarga yang diuji.

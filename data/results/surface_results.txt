@@ -1,0 +1,66 @@
+C:\Users\User\Documents\lunar-earthquake\src\unified\foreshock_perevent.py:98: RuntimeWarning: Mean of empty slice
+  lvl = np.nanmean(vals, axis=0)
+C:\Users\User\Documents\lunar-earthquake\src\unified\foreshock_perevent.py:99: RuntimeWarning: Mean of empty slice
+  ab = np.nanmean(np.abs(vals), axis=0)
+C:\Users\User\Documents\lunar-earthquake\src\unified\foreshock_perevent.py:100: RuntimeWarning: Mean of empty slice
+  rate = (np.nanmean(np.abs(np.diff(vals, axis=0)), axis=0)
+==============================================================================
+SUHU PERMUKAAN & UAP AIR — DIUJI DI ATAS EPISENTRUM
+==============================================================================
+  kandidat    Mw >= 5.0 dangkal        : 42,426
+  gempa induk (declustered)      : 3,694
+  foreshock / bukan              : 2,388 / 40,038
+  jendela     1-7 hari SEBELUM gempa (kausal)
+  null        49 offset tahunan x +/-15 hari
+==============================================================================
+HASIL
+==============================================================================
+  medan                  pertanyaan           variabel          z        p
+  ------------------------------------------------------------------------
+    air/gempa induk 40/300
+    air/gempa induk 80/300
+    air/gempa induk 120/300
+    air/gempa induk 160/300
+    air/gempa induk 200/300
+    air/gempa induk 240/300
+    air/gempa induk 280/300
+  suhu udara permukaan   gempa induk          air_rate       1.65    0.253
+    air/foreshock vs biasa 40/300
+    air/foreshock vs biasa 80/300
+    air/foreshock vs biasa 120/300
+    air/foreshock vs biasa 160/300
+    air/foreshock vs biasa 200/300
+    air/foreshock vs biasa 240/300
+    air/foreshock vs biasa 280/300
+  suhu udara permukaan   foreshock vs biasa   air_abs        1.24    0.483
+                         (tercakup 99.4% kandidat)
+    pwat/gempa induk 40/300
+    pwat/gempa induk 80/300
+    pwat/gempa induk 120/300
+    pwat/gempa induk 160/300
+    pwat/gempa induk 200/300
+    pwat/gempa induk 240/300
+    pwat/gempa induk 280/300
+  uap air kolom          gempa induk          pwat_level     2.69    0.020
+    pwat/foreshock vs biasa 40/300
+    pwat/foreshock vs biasa 80/300
+    pwat/foreshock vs biasa 120/300
+    pwat/foreshock vs biasa 160/300
+    pwat/foreshock vs biasa 200/300
+    pwat/foreshock vs biasa 240/300
+    pwat/foreshock vs biasa 280/300
+  uap air kolom          foreshock vs biasa   pwat_abs       0.62    0.890
+                         (tercakup 96.2% kandidat)
+==============================================================================
+VONIS
+==============================================================================
+  Bonferroni atas 4 uji -> ambang p < 0.0125
+  p terkecil : 0.020
+  TIDAK ADA yang lolos.
+  Klaim termal kini tertutup dalam ketiga bentuknya:
+      OLR              puncak atmosfer, 1974-2022
+      suhu permukaan   udara dekat tanah, 1970-2025
+      uap air          kolom uap air, 1970-2025
+  Ketiganya diuji di atas episentrum, dengan sampling kausal dan null yang
+  menjaga musim. Bentuk permukaan inilah yang sebenarnya dimaksud sebagian
+  besar paper prekursor termal, dan sampai uji ini bentuk itu belum tersentuh.

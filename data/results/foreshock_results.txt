@@ -1,0 +1,51 @@
+==============================================================================
+BISAKAH LANGIT MEMBEDAKAN FORESHOCK DARI GEMPA KECIL BIASA?
+==============================================================================
+  kandidat    Mw >= 5.0 dangkal          : 42,426
+  foreshock   disusul Mw >= 6.0 dalam
+              100 km / 15 hari              : 2,388  (5.6%)
+  bukan                                : 40,038
+  rentang     1976-01-01 .. 2026-03-31
+  Jadi 5.6% gempa Mw>=5.0 ternyata foreshock. Pertanyaannya:
+  apakah langit tahu yang mana, PADA HARI gempa kecil itu terjadi?
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  130 variabel, 8 keluarga
+  di dalam rentang bank: 40,813 (2,268 foreshock, 38,545 bukan)
+==============================================================================
+HASIL PER KELUARGA
+==============================================================================
+  Membandingkan 2,268 foreshock dengan 38,545 gempa kecil biasa.
+  'p' sudah terkoreksi untuk seluruh variabel dalam keluarga.
+  keluarga      n var   z maks        p  variabel terbaik
+  ----------------------------------------------------------------
+  LUNAR            13     1.57    0.595  moon_h4_sin
+  TIDAL             8     1.46    0.620  ocean_tide_height
+  PLANETARY        80     2.34    0.412  pl_geo_Mercury_Jupiter_p
+  SOLAR             9     2.27    0.182  sol_sunspot
+  HYDRO             8     1.84    0.307  hyd_grace_land
+  ROTATION          5     1.33    0.552  rot_polar_motion
+  ATMOSPHERE        4     1.50    0.378  atm_anom_absmean
+  IONOSPHERE        3     1.09    0.435  ion_tec_absmean
+==============================================================================
+KOREKSI GABUNGAN
+==============================================================================
+    total variabel    : 130
+    terbaik data asli : z = 2.34  (pl_geo_Mercury_Jupiter_prox)
+    terbaik pada null : rata-rata z = 2.66, maks 4.89
+    p TERKOREKSI      : 0.708
+==============================================================================
+SEBERAPA BESAR EFEK YANG MASIH MUNGKIN BERSEMBUNYI?
+==============================================================================
+  Ambang deteksi (persentil 95 null) : z = 3.68
+  Peluang dasar sebuah Mw>=5.0 adalah foreshock : 5.6%
+  Efek sebesar ambang itu akan menggeser peluang tersebut sekitar
+  0.43 poin persen. Apa pun yang lebih besar dari itu
+  sudah pasti tertangkap, dan tidak tertangkap.

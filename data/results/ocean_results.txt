@@ -1,0 +1,91 @@
+
+==============================================================================
+OCEAN-LOADED TIDAL STRESS: TESTING THE MEGATHRUSTS PROPERLY
+==============================================================================
+
+  catalogue    Global CMT 1976-2020, Mw >= 5.5, depth <= 70 km, declustered
+  ocean model  GOT4.10c, 8 constituents, direct sea-floor water load
+  events       9024 mainshocks, of which 7945 submarine
+               (88.0%)
+  megathrusts  1996 submarine thrusts dipping <= 30 deg
+  threshold    Bonferroni over 8 declared tests -> p < 0.00625
+
+  computing body tide alone ...
+    tidal stress: 250/9024 events    tidal stress: 500/9024 events    tidal stress: 750/9024 events    tidal stress: 1000/9024 events    tidal stress: 1250/9024 events    tidal stress: 1500/9024 events    tidal stress: 1750/9024 events    tidal stress: 2000/9024 events    tidal stress: 2250/9024 events    tidal stress: 2500/9024 events    tidal stress: 2750/9024 events    tidal stress: 3000/9024 events    tidal stress: 3250/9024 events    tidal stress: 3500/9024 events    tidal stress: 3750/9024 events    tidal stress: 4000/9024 events    tidal stress: 4250/9024 events    tidal stress: 4500/9024 events    tidal stress: 4750/9024 events    tidal stress: 5000/9024 events    tidal stress: 5250/9024 events    tidal stress: 5500/9024 events    tidal stress: 5750/9024 events    tidal stress: 6000/9024 events    tidal stress: 6250/9024 events    tidal stress: 6500/9024 events    tidal stress: 6750/9024 events    tidal stress: 7000/9024 events    tidal stress: 7250/9024 events    tidal stress: 7500/9024 events    tidal stress: 7750/9024 events    tidal stress: 8000/9024 events    tidal stress: 8250/9024 events    tidal stress: 8500/9024 events    tidal stress: 8750/9024 events    tidal stress: 9000/9024 events    tidal stress: 9024/9024 events                                                              computing body tide + ocean load ...
+    tidal stress: 250/9024 events    tidal stress: 500/9024 events    tidal stress: 750/9024 events    tidal stress: 1000/9024 events    tidal stress: 1250/9024 events    tidal stress: 1500/9024 events    tidal stress: 1750/9024 events    tidal stress: 2000/9024 events    tidal stress: 2250/9024 events    tidal stress: 2500/9024 events    tidal stress: 2750/9024 events    tidal stress: 3000/9024 events    tidal stress: 3250/9024 events    tidal stress: 3500/9024 events    tidal stress: 3750/9024 events    tidal stress: 4000/9024 events    tidal stress: 4250/9024 events    tidal stress: 4500/9024 events    tidal stress: 4750/9024 events    tidal stress: 5000/9024 events    tidal stress: 5250/9024 events    tidal stress: 5500/9024 events    tidal stress: 5750/9024 events    tidal stress: 6000/9024 events    tidal stress: 6250/9024 events    tidal stress: 6500/9024 events    tidal stress: 6750/9024 events    tidal stress: 7000/9024 events    tidal stress: 7250/9024 events    tidal stress: 7500/9024 events    tidal stress: 7750/9024 events    tidal stress: 8000/9024 events    tidal stress: 8250/9024 events    tidal stress: 8500/9024 events    tidal stress: 8750/9024 events    tidal stress: 9000/9024 events    tidal stress: 9024/9024 events                                                            
+==============================================================================
+WHAT THE OCEAN TERM DOES TO THE STRESS
+==============================================================================
+
+  median dCFS amplitude, submarine events (n = 7870):
+      body tide alone             457 Pa
+      body tide + ocean load     1361 Pa
+      amplification               3.0 x
+
+  megathrusts only (submarine thrust, dip <= 30 deg):
+      body tide alone             330 Pa
+      body tide + ocean load     2651 Pa
+      amplification               8.0 x
+
+  This is the gap the earlier rounds were honest about. It is now closed.
+
+==============================================================================
+PRIMARY TEST AND COMPARISON
+==============================================================================
+
+  submarine megathrusts, BODY TIDE ONLY    n= 1981  p=  0.1020  R/n=0.0339  mean= 283.3deg  no effect
+  submarine megathrusts, + OCEAN  <-- PRIMARY n= 1981  p=  0.9173  R/n=0.0066  mean= 353.4deg  no effect
+
+==============================================================================
+DECLARED SUBSETS, OCEAN-LOADED
+==============================================================================
+
+  all submarine events                     n= 7909  p=  0.4527  R/n=0.0100  mean= 358.6deg  no effect
+  submarine thrust (any dip)               n= 3100  p=  0.5202  R/n=0.0145  mean=  15.1deg  no effect
+  submarine normal                         n= 1007  p=  0.5804  R/n=0.0232  mean= 217.2deg  no effect
+  submarine strike-slip                    n= 3802  p=  0.4599  R/n=0.0143  mean=   0.6deg  no effect
+  continental (no ocean term applies)      n= 1071  p=  0.6252  R/n=0.0209  mean= 134.5deg  no effect
+
+  amplitude Q1 (weakest)                   n= 1978  p=  0.2900  R/n=0.0250  mean=  32.4deg  no effect   [0-812 Pa]
+  amplitude Q2                             n= 1977  p=  0.2092  R/n=0.0281  mean= 307.7deg  no effect   [812-1362 Pa]
+  amplitude Q3                             n= 1977  p=  0.1448  R/n=0.0313  mean= 140.7deg  no effect   [1362-2445 Pa]
+  amplitude Q4 (strongest)                 n= 1977  p=  0.2000  R/n=0.0285  mean= 335.3deg  no effect   [2445-99999 Pa]
+
+==============================================================================
+PHASE DISTRIBUTION, OCEAN-LOADED MEGATHRUSTS
+==============================================================================
+
+  0 deg = tidal stress maximum. Expected per bin: 165.1
+
+    0- 30deg  160   -3.1%  #####################
+   30- 60deg  147  -11.0%  ####################
+   60- 90deg  180   +9.0%  ########################
+   90-120deg  162   -1.9%  ######################
+  120-150deg  176   +6.6%  #######################
+  150-180deg  161   -2.5%  #####################
+  180-210deg  163   -1.3%  ######################
+  210-240deg  148  -10.3%  ####################
+  240-270deg  175   +6.0%  #######################
+  270-300deg  164   -0.7%  ######################
+  300-330deg  179   +8.4%  ########################
+  330-360deg  166   +0.6%  ######################
+
+==============================================================================
+VERDICT
+==============================================================================
+
+  primary: submarine megathrusts, ocean-loaded tidal stress
+      n = 1981, p = 0.9173, threshold p < 0.00625
+      -> no significant tidal preference detected
+
+  The honest reading: the largest remaining loophole in this replication has
+  been closed rather than argued around. The ocean term raises tidal stress on
+  submarine megathrusts by roughly an order of magnitude, putting these events
+  in the regime where published work reports weak positive results -- and the
+  test now has the sensitivity to see such an effect if it is there.
+
+  What has NOT changed is the thing that matters for the original claim. Even a
+  confirmed few-percent modulation of earthquake probability with tidal phase
+  would not let anyone forecast an individual earthquake, and it would say
+  nothing whatever about Venus, Neptune, or the geometry between them.
+

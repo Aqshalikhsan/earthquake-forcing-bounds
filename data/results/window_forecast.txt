@@ -1,0 +1,62 @@
+==============================================================================
+PERAMALAN JENDELA: WILAYAH + 10-15 HARI, APA YANG BISA DIBERIKAN
+==============================================================================
+  katalog   GCMT dangkal Mw>=5,0 : 42,426
+  induk     Mw>=6.0              : 4,677
+  rentang   1976-01-01 .. 2026-03-31
+==============================================================================
+PELUANG ADA M>=5,0 SUSULAN SETELAH GEMPA INDUK M>=6,0
+==============================================================================
+   radius   jendela   setelah induk   hari biasa   kelipatan
+  ------------------------------------------------------------
+    100 km       7 hr           35.1%         2.7%       13.1x
+    100 km      10 hr           37.6%         4.0%        9.4x
+    100 km      15 hr           40.5%         5.6%        7.3x
+    100 km      30 hr           46.1%        10.1%        4.6x
+    200 km       7 hr           38.3%         6.5%        5.9x
+    200 km      10 hr           41.1%         8.8%        4.7x
+    200 km      15 hr           44.9%        12.3%        3.7x
+    200 km      30 hr           52.2%        21.5%        2.4x
+==============================================================================
+PELUANG ADA M>=6,0 SUSULAN SETELAH GEMPA INDUK M>=6,0
+==============================================================================
+   radius   jendela   setelah induk   hari biasa   kelipatan
+  ------------------------------------------------------------
+    100 km       7 hr           10.3%         0.5%       21.4x
+    100 km      10 hr           11.5%         0.6%       19.2x
+    100 km      15 hr           12.7%         0.9%       13.8x
+    100 km      30 hr           14.6%         1.8%        8.3x
+    200 km       7 hr           12.2%         1.0%       12.6x
+    200 km      10 hr           13.6%         1.4%        9.7x
+    200 km      15 hr           15.1%         2.1%        7.1x
+    200 km      30 hr           17.9%         4.0%        4.5x
+==============================================================================
+CAKUPAN: berapa banyak gempa besar yang BISA diperingatkan begini?
+==============================================================================
+  Sebuah gempa hanya bisa masuk jendela seperti ini kalau ia DIDAHULUI gempa
+  besar lain di dekatnya. Yang datang tanpa pendahulu tidak tersentuh metode
+  ini sama sekali, berapa pun bagus modelnya.
+   radius   jendela   didahului M>=6,0      tidak
+  --------------------------------------------------
+    100 km       7 hr               9.5%      90.5%
+    100 km      10 hr              10.6%      89.4%
+    100 km      15 hr              11.8%      88.2%
+    100 km      30 hr              13.7%      86.3%
+    200 km       7 hr              11.0%      89.0%
+    200 km      10 hr              12.3%      87.7%
+    200 km      15 hr              13.7%      86.3%
+    200 km      30 hr              16.7%      83.3%
+==============================================================================
+ARTINYA
+==============================================================================
+  Dua angka itu harus dibaca bersama, dan keduanya jujur:
+    KETERAMPILAN tinggi -- setelah gempa induk, peluang di wilayah itu naik
+    berkali-kali lipat dibanding hari biasa. Itu nyata, terukur, dan sudah
+    dipakai USGS maupun BMKG. Peringatan "waspada 2 minggu ke depan di radius
+    100 km" adalah produk yang sah dan berguna.
+    CAKUPAN kecil -- hanya sebagian kecil gempa besar yang didahului gempa
+    besar lain di dekatnya. Sisanya datang tanpa pendahulu, dan untuk mereka
+    metode ini tidak memberi apa-apa.
+  Jadi jawabannya bukan ya atau tidak, melainkan: BISA, untuk gempa yang
+  mengikuti gempa lain. Dan itu bukan prediksi gempa -- itu peramalan susulan,
+  yang memang sudah berjalan hari ini tanpa perlu bantuan langit.

@@ -1,0 +1,82 @@
+
+==============================================================================
+SAPUAN JEDA WAKTU: apakah ada gaya yang MENDAHULUI gempa?
+==============================================================================
+
+  katalog  global M>=6,0, 1970-01-01 .. 2024-12-31
+  hari     20,089   laju dasar 28.89%
+  jeda     [0, 1, 2, 3, 5, 7, 10, 14, 21, 30] hari
+
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+
+  130 variabel x 10 jeda = 1,300 uji
+  pasangan valid: 1,300   hari dipakai: 20,059
+    null 50/300    null 100/300    null 150/300    null 200/300    null 250/300    null 300/300                              
+==============================================================================
+HASIL PER KELUARGA  (jeda terbaik dari sapuan penuh)
+==============================================================================
+
+  'jeda'     jeda hari terbaik yang ditemukan di keluarga itu
+  'terukur'  modulasi laju pada jeda tersebut
+  'p'        sudah terkoreksi untuk SELURUH sapuan variabel x jeda
+
+  keluarga      jeda   terukur   ambang       p  variabel
+  ------------------------------------------------------------------------------
+  LUNAR          14d     3.20%    4.02%   0.733  moon_h1_sin
+  TIDAL          10d     3.37%    3.62%   0.197  ocean_load_abs
+  PLANETARY      30d     5.51%    9.14%   0.717  pl_helio_Saturn_Uranus
+  SOLAR          14d     4.87%    6.20%   0.637  sol_ram_pressure
+  HYDRO          21d     4.91%    8.25%   0.657  hyd_grace_land
+  ROTATION       21d     7.05%    8.95%   0.417  rot_lod_decadal
+  ATMOSPHERE      0d     2.97%    3.69%   0.637  atm_anom_spread
+  IONOSPHERE     21d     4.07%    6.91%   0.887  ion_tec_absmean
+
+==============================================================================
+KOREKSI GABUNGAN: seluruh keluarga x seluruh jeda
+==============================================================================
+
+    total uji         : 1,300  (130 variabel x 10 jeda)
+    terbaik data asli : 7.05%  (rot_lod_decadal, jeda 21 hari)
+    terbaik pada null : rata-rata 7.77%, maks 9.44%
+    p TERKOREKSI      : 0.753
+
+
+==============================================================================
+APAKAH JEDA TERTENTU LEBIH MENJANJIKAN?
+==============================================================================
+
+    jeda    terbaik   ambang 95%  keluarga
+  --------------------------------------------------------
+      0d      6.90%        9.14%  ROTATION
+      1d      6.90%        9.14%  ROTATION
+      2d      6.90%        9.14%  ROTATION
+      3d      6.90%        9.14%  ROTATION
+      5d      6.95%        9.10%  ROTATION
+      7d      7.00%        9.09%  ROTATION
+     10d      7.00%        9.09%  ROTATION
+     14d      7.00%        9.09%  ROTATION
+     21d      7.05%        9.09%  ROTATION
+     30d      6.85%        9.09%  ROTATION
+
+==============================================================================
+CATATAN
+==============================================================================
+
+  Jeda adalah parameter bebas, dan di sini dibayar penuh: null menyapu seluruh
+  1,300 kombinasi variabel x jeda pada setiap pergeseran, sama kerasnya
+  dengan pencarian pada data asli. Tanpa itu, sapuan jeda hanyalah mesin
+  pencetak prekursor -- sepuluh jeda memberi sepuluh kesempatan tambahan untuk
+  menemukan p<0,05 secara kebetulan.
+
+  Perbandingan langsung: El Moudden dkk. mencoba menggeser jendela sekali,
+  mendapat R-squared negatif, melaporkannya dalam satu kalimat, dan
+  mempertahankan kata 'precursor' di judul.
+

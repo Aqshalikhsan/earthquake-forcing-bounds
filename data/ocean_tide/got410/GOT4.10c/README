@@ -1,0 +1,68 @@
+The ocean tide model available at this site, called GOT4.10c, is
+the latest solution in a series beginning with the work described in:
+
+E J O Schrama and R Ray, Journal of Geophysical Research, v.99, p 24799, 1994.
+and
+R Ray, A global ocean tide model from Topex/Poseidon altimetry: GOT99.2,
+   NASA Tech Memo 209478, 58 pages, Sept. 1999.
+
+See also the explicit description of GOT4.10 in Appendix A of
+
+R Ray, Journal of Geophysical Research, 118, 4570-4584, 2013.
+
+GOT4.10c is a small revision of 4.10 to account for tidal geocenter
+oscillations, as described in Desai & Ray (Geophys Res Lett, 41, 2454, 2014).
+
+
+Three sets of ascii tide grids are provided.  One set is for the ocean 
+tide only, another for the ocean+load tide, and third for the load tide.
+The ocean+load should be used for computing corrections to altimetry.  
+The "ocean tide" should be consistent with what a conventional tide gauge 
+measures.  The load tide is defined everywhere, including on land.
+
+The ocean tide grids are also provided in netCDF format, in a 
+separate directory.
+
+Note that GOT4.10 and 4.10c are identical in the ocean+load grids.
+The geocenter adjustment changes only how their sum is separated into
+separate ocean and load components.
+
+There are two different software modules in this directory.  One called
+PERTH3 is a subroutine to do tidal prediction given a lat/lon/time.
+The other is GRIDIO which can be used to read the ascii grids.  If you
+only require prediction, then you need not worry about GRIDIO.
+
+The prediction software PERTH3 runs on any of the provided sets of tidal
+grids, depending on what kind of tide the user wants to calculate.
+It returns predictions in the same units as in the amplitude grids
+(generally cm, but the load tides are usually mm).
+The prediction software includes 16 minor tides by inference.  These
+16 tides are:  2Q1, sigma1, rho1, M1, chi1, pi1, phi1, theta1, J1, OO1, 
+2N2, mu2, nu2, lambda2, L2, T2.
+Note that S1 and M4 were not included in the GOT4.10 solution, so the files
+in this directory for these two constituents are from GOT4.7.
+
+PERTH3 is an updated version of PERTH2, which allows inclusion of
+the S1 constituent and (optionally) the M4 constituent.
+Note that when running PERTH3, it expects the 9 (or 10) main tide grids to be
+concatenated into one file.  So before running PERTH3, do
+         cat q1.d o1.d p1.d s1.d k1.d n2.d m2.d s2.d k2.d m4.d > fort.30
+or the equivalent for your operating system.  If you don't understand the
+time system used by PERTH3 (modified julian date), then contact me; I have
+conversion subroutines.
+
+If you're interested in reading the ascii tidal grids for some
+particular reason, then use GRIDIO to read them. In any dataset, e.g. 
+m2.d, the amplitude and phase grids are concatenated, so reading both 
+requires simply two calls to the reader subroutine gridin.
+
+It should go without saying that these satellite-based data were
+developed primarily for use in space geodesy.  They must NOT be used
+in coastal (or other) applications risking life or property.  They
+should never be used for coastal navigation purposes.
+
+R D Ray, Goddard Space Flight Center                       July 2014
+richard.ray@nasa.gov
+
+Later added directory: SAL - for self-attraction/loading "tides";
+useful for solving Laplace tidal equations (cf. Ray, 1999, cited above)

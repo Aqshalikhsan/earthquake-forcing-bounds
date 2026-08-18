@@ -1,0 +1,45 @@
+
+==============================================================================
+ANOMALI TEC IONOSFER — DIUJI PER GEMPA DI ATAS EPISENTRUMNYA
+==============================================================================
+
+  TEC       1801 hari, 2015-01-01 .. 2019-12-31
+  grid      71 x 73 (2,5 x 5 derajat)
+  nilai     median 10.2 TECU, maks 77.6
+
+  anomali (setelah median berjalan 27 hari): sd 1.68 TECU
+
+  gempa M>=6,0 dangkal, declustered, dalam rentang TEC: 377
+  tersampel : 377 (100.0%)
+  jendela   : 1-5 hari SEBELUM gempa (kausal)
+
+    null 400/2000    null 800/2000    null 1200/2000    null 1600/2000    null 2000/2000                              
+==============================================================================
+HASIL
+==============================================================================
+
+  statistik               terukur   null rata2    null sd         p
+  ------------------------------------------------------------------
+  H2_level_mean            0.1533       0.1053     0.0772    0.5360
+  H1_absLevel_mean         1.3902       1.2832     0.0656    0.0980
+  H3_rate_mean             1.4566       1.3100     0.0660    0.0295
+
+  Bonferroni atas 3 statistik -> ambang p < 0.0167
+
+==============================================================================
+VONIS
+==============================================================================
+
+  TIDAK ADA anomali TEC prekursor yang lolos koreksi.
+
+  Sampling kausal ditegakkan: hanya hari 1-5 SEBELUM gempa yang dibaca.
+  Gangguan ionosfer yang DISEBABKAN gempa (dan tsunaminya) terdokumentasi baik;
+  jendela non-kausal akan menemukan itu lalu menyebutnya prekursor. Itu persis
+  kesalahan yang membatalkan hasil GRACE: p < 0,0001 menjadi p = 0,36 setelah
+  hanya bulan sebelumnya yang diizinkan.
+
+  Confound yang tersisa dan perlu disebut di naskah: badai geomagnetik menaikkan
+  TEC secara global, dan badai itu digerakkan aktivitas matahari -- yang sudah
+  diukur nol di keluarga SOLAR (AUC 0,45-0,48). Median berjalan 27 hari
+  menghapus tren lambat, tapi tidak menghapus badai tunggal.
+

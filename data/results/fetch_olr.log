@@ -1,0 +1,51 @@
+
+==============================================================================
+OLR — RADIASI INFRAMERAH HARIAN, NOAA PSL
+==============================================================================
+  ukuran di server: 349 MB
+        20/349 MB    5.8%  percobaan 1
+        30/349 MB    8.5%  percobaan 2
+        41/349 MB   11.8%  percobaan 3
+        53/349 MB   15.1%  percobaan 4
+        62/349 MB   17.9%  percobaan 5
+        73/349 MB   21.0%  percobaan 6
+        84/349 MB   24.0%  percobaan 7
+        94/349 MB   27.1%  percobaan 8
+       106/349 MB   30.3%  percobaan 9
+       116/349 MB   33.3%  percobaan 10
+       127/349 MB   36.4%  percobaan 11
+       139/349 MB   39.7%  percobaan 12
+       149/349 MB   42.6%  percobaan 13
+       160/349 MB   45.8%  percobaan 14
+       171/349 MB   48.9%  percobaan 15
+       182/349 MB   52.0%  percobaan 16
+       192/349 MB   55.1%  percobaan 17
+       204/349 MB   58.3%  percobaan 18
+       214/349 MB   61.4%  percobaan 19
+       224/349 MB   64.3%  percobaan 20
+       234/349 MB   67.1%  percobaan 21
+       244/349 MB   70.0%  percobaan 22
+       255/349 MB   73.0%  percobaan 23
+       265/349 MB   75.9%  percobaan 24
+       276/349 MB   78.9%  percobaan 25
+       286/349 MB   82.0%  percobaan 26
+       298/349 MB   85.5%  percobaan 27
+       308/349 MB   88.3%  percobaan 28
+       319/349 MB   91.4%  percobaan 29
+       328/349 MB   94.1%  percobaan 30
+       339/349 MB   97.2%  percobaan 31
+       349/349 MB  100.0%  percobaan 32
+  lengkap: 349 MB dalam 8.9 menit
+
+  variabel  olr   (17746, 73, 144)
+  grid      73 x 144  (2.5 x 2.5 derajat)
+  waktu     1974-06-01 .. 2022-12-31  (17,746 hari)
+
+  sel berisi gempa: 1,900 dari 10,512 (18.1%)
+    500/17,746 hari  0.0 mnt    1,000/17,746 hari  0.0 mnt    1,500/17,746 hari  0.0 mnt    2,000/17,746 hari  0.0 mnt    2,500/17,746 hari  0.0 mnt    3,000/17,746 hari  0.0 mnt    3,500/17,746 hari  0.0 mnt    4,000/17,746 hari  0.0 mnt    4,500/17,746 hari  0.0 mnt    5,000/17,746 hari  0.0 mnt    5,500/17,746 hari  0.0 mnt    6,000/17,746 hari  0.0 mnt    6,500/17,746 hari  0.0 mnt    7,000/17,746 hari  0.0 mnt    7,500/17,746 hari  0.0 mnt    8,000/17,746 hari  0.0 mnt    8,500/17,746 hari  0.0 mnt    9,000/17,746 hari  0.0 mnt    9,500/17,746 hari  0.0 mnt    10,000/17,746 hari  0.0 mnt    10,500/17,746 hari  0.0 mnt    11,000/17,746 hari  0.0 mnt    11,500/17,746 hari  0.0 mnt    12,000/17,746 hari  0.0 mnt    12,500/17,746 hari  0.0 mnt    13,000/17,746 hari  0.0 mnt    13,500/17,746 hari  0.0 mnt    14,000/17,746 hari  0.0 mnt    14,500/17,746 hari  0.1 mnt    15,000/17,746 hari  0.1 mnt    15,500/17,746 hari  0.1 mnt    16,000/17,746 hari  0.1 mnt    16,500/17,746 hari  0.1 mnt    17,000/17,746 hari  0.1 mnt    17,500/17,746 hari  0.1 mnt    17,746/17,746 hari  0.1 mntC:\Users\User\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\_core\fromnumeric.py:83: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+                                                  
+  tersimpan  olr_cells.npy  135 MB
+             olr_days.npy, olr_cellid.npy, olr_gridshape.npy
+  nilai      median 228.0 W/m2, sd inf
+

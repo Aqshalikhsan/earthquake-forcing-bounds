@@ -1,0 +1,35 @@
+C:\Users\User\Documents\lunar-earthquake\src\unified\foreshock_perevent.py:98: RuntimeWarning: Mean of empty slice
+  lvl = np.nanmean(vals, axis=0)
+C:\Users\User\Documents\lunar-earthquake\src\unified\foreshock_perevent.py:99: RuntimeWarning: Mean of empty slice
+  ab = np.nanmean(np.abs(vals), axis=0)
+C:\Users\User\Documents\lunar-earthquake\src\unified\foreshock_perevent.py:100: RuntimeWarning: Mean of empty slice
+  rate = (np.nanmean(np.abs(np.diff(vals, axis=0)), axis=0)
+==============================================================================
+ANOMALI TERMAL (OLR) — DIUJI DI ATAS EPISENTRUM
+==============================================================================
+  OLR        17,746 hari terindeks, anomali per sel (rerata berjalan 30 hari)
+  kandidat   Mw >= 5.0 dangkal : 42,426
+  tercakup   38,351 (90.4%)
+  jendela    1-7 hari SEBELUM gempa (kausal)
+  gempa induk (declustered) : 3,694
+  foreshock / bukan         : 2,388 / 40,038
+  null                      : 49 offset tahunan x +/-15 hari
+==============================================================================
+HASIL
+==============================================================================
+  pertanyaan                        n variabel           z        p
+  ------------------------------------------------------------------
+  gempa induk                   3,694 olr_level       1.82    0.173
+  foreshock vs biasa            2,388 olr_abs         1.57    0.207
+==============================================================================
+VONIS
+==============================================================================
+  Bonferroni atas 2 pertanyaan -> ambang p < 0,025
+  TIDAK ADA yang lolos.
+  Dengan ini ketiga sinyal prekursor yang paling sering dikutip sudah selesai:
+      radon      tidak ada arsip global -- tidak bisa diuji sama sekali
+      TEC        1998-2024, 1.907 gempa   p = 0,90 (per-gempa)
+      termal     1974-2022, 38,351 kandidat   p = 0.17 / 0.21
+  Catatan kategori: OLR bukan gaya. Ia gejala, dan gejala punya cara gagal yang
+  tidak dimiliki gaya -- efek yang DISEBABKAN gempa terbaca sebagai pendahulu.
+  Sampling 1-7 hari sebelum waktu asal adalah yang menutup jalan itu.

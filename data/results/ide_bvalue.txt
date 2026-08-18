@@ -1,0 +1,77 @@
+
+==============================================================================
+UJI IDE dkk. 2016: apakah nilai-b bergeser dengan AMPLITUDO pasang surut
+==============================================================================
+
+  Uji fase (Schuster) tidak bisa menjawab klaim ini, seberapa pun besar
+  dayanya, karena klaimnya bukan tentang jam berapa gempa terjadi melainkan
+  tentang ukuran gempa yang terjadi ketika pasang surut sedang kuat.
+
+  menghitung tegangan pasang surut di bidang sesar 29,027 gempa ...
+    tidal stress: 250/29027 events    tidal stress: 500/29027 events    tidal stress: 750/29027 events    tidal stress: 1000/29027 events    tidal stress: 1250/29027 events    tidal stress: 1500/29027 events    tidal stress: 1750/29027 events    tidal stress: 2000/29027 events    tidal stress: 2250/29027 events    tidal stress: 2500/29027 events    tidal stress: 2750/29027 events    tidal stress: 3000/29027 events    tidal stress: 3250/29027 events    tidal stress: 3500/29027 events    tidal stress: 3750/29027 events    tidal stress: 4000/29027 events    tidal stress: 4250/29027 events    tidal stress: 4500/29027 events    tidal stress: 4750/29027 events    tidal stress: 5000/29027 events    tidal stress: 5250/29027 events    tidal stress: 5500/29027 events    tidal stress: 5750/29027 events    tidal stress: 6000/29027 events    tidal stress: 6250/29027 events    tidal stress: 6500/29027 events    tidal stress: 6750/29027 events    tidal stress: 7000/29027 events    tidal stress: 7250/29027 events    tidal stress: 7500/29027 events    tidal stress: 7750/29027 events    tidal stress: 8000/29027 events    tidal stress: 8250/29027 events    tidal stress: 8500/29027 events    tidal stress: 8750/29027 events    tidal stress: 9000/29027 events    tidal stress: 9250/29027 events    tidal stress: 9500/29027 events    tidal stress: 9750/29027 events    tidal stress: 10000/29027 events    tidal stress: 10250/29027 events    tidal stress: 10500/29027 events    tidal stress: 10750/29027 events    tidal stress: 11000/29027 events    tidal stress: 11250/29027 events    tidal stress: 11500/29027 events    tidal stress: 11750/29027 events    tidal stress: 12000/29027 events    tidal stress: 12250/29027 events    tidal stress: 12500/29027 events    tidal stress: 12750/29027 events    tidal stress: 13000/29027 events    tidal stress: 13250/29027 events    tidal stress: 13500/29027 events    tidal stress: 13750/29027 events    tidal stress: 14000/29027 events    tidal stress: 14250/29027 events    tidal stress: 14500/29027 events    tidal stress: 14750/29027 events    tidal stress: 15000/29027 events    tidal stress: 15250/29027 events    tidal stress: 15500/29027 events    tidal stress: 15750/29027 events    tidal stress: 16000/29027 events    tidal stress: 16250/29027 events    tidal stress: 16500/29027 events    tidal stress: 16750/29027 events    tidal stress: 17000/29027 events    tidal stress: 17250/29027 events    tidal stress: 17500/29027 events    tidal stress: 17750/29027 events    tidal stress: 18000/29027 events    tidal stress: 18250/29027 events    tidal stress: 18500/29027 events    tidal stress: 18750/29027 events    tidal stress: 19000/29027 events    tidal stress: 19250/29027 events    tidal stress: 19500/29027 events    tidal stress: 19750/29027 events    tidal stress: 20000/29027 events    tidal stress: 20250/29027 events    tidal stress: 20500/29027 events    tidal stress: 20750/29027 events    tidal stress: 21000/29027 events    tidal stress: 21250/29027 events    tidal stress: 21500/29027 events    tidal stress: 21750/29027 events    tidal stress: 22000/29027 events    tidal stress: 22250/29027 events    tidal stress: 22500/29027 events    tidal stress: 22750/29027 events    tidal stress: 23000/29027 events    tidal stress: 23250/29027 events    tidal stress: 23500/29027 events    tidal stress: 23750/29027 events    tidal stress: 24000/29027 events    tidal stress: 24250/29027 events    tidal stress: 24500/29027 events    tidal stress: 24750/29027 events    tidal stress: 25000/29027 events    tidal stress: 25250/29027 events    tidal stress: 25500/29027 events    tidal stress: 25750/29027 events    tidal stress: 26000/29027 events    tidal stress: 26250/29027 events    tidal stress: 26500/29027 events    tidal stress: 26750/29027 events    tidal stress: 27000/29027 events    tidal stress: 27250/29027 events    tidal stress: 27500/29027 events    tidal stress: 27750/29027 events    tidal stress: 28000/29027 events    tidal stress: 28250/29027 events    tidal stress: 28500/29027 events    tidal stress: 28750/29027 events    tidal stress: 29000/29027 events    tidal stress: 29027/29027 events                                                              tercakup 99.4%
+
+==============================================================================
+KATALOG PENUH
+==============================================================================
+
+  penuh: 28,865 gempa Mw>=5.2, 1,422 di antaranya Mw>=6.5
+
+  desil amplitudo          b   frac Mw>=6.5        n
+  --------------------------------------------------
+   1 (terlemah)       0.866          5.65%    2,887
+   2                  0.837          6.06%    2,886
+   3                  0.836          5.68%    2,887
+   4                  0.866          5.09%    2,886
+   5                  0.868          5.13%    2,886
+   6                  0.878          4.92%    2,887
+   7                  0.894          4.40%    2,886
+   8                  0.894          4.50%    2,887
+   9                  0.943          3.57%    2,886
+  10 (terkuat)        0.945          4.26%    2,887
+
+  statistik                            teramati           null 95%        p
+  --------------------------------------------------------------------------
+  b(lemah) - b(kuat), harus > 0         -0.0561 [-0.0508, -0.0179]    0.995
+  korelasi b vs desil, harus < 0         0.9515   [0.5394, 0.9636]    0.967
+  kenaikan fraksi Mw>=6.5               -0.0119 [-0.0116, -0.0021]    0.984
+
+==============================================================================
+SETELAH DECLUSTERING
+==============================================================================
+
+  declustered: 18,393 gempa Mw>=5.2, 1,172 di antaranya Mw>=6.5
+
+  desil amplitudo          b   frac Mw>=6.5        n
+  --------------------------------------------------
+   1 (terlemah)       0.788          7.72%    1,840
+   2                  0.757          7.83%    1,839
+   3                  0.769          7.50%    1,839
+   4                  0.780          6.96%    1,839
+   5                  0.796          6.47%    1,839
+   6                  0.815          5.98%    1,840
+   7                  0.802          6.09%    1,839
+   8                  0.840          5.38%    1,839
+   9                  0.883          4.40%    1,839
+  10 (terkuat)        0.882          5.38%    1,840
+
+  statistik                            teramati           null 95%        p
+  --------------------------------------------------------------------------
+  b(lemah) - b(kuat), harus > 0         -0.0660 [-0.0692, -0.0313]    0.943
+  korelasi b vs desil, harus < 0         0.9030   [0.6970, 0.9758]    0.676
+  kenaikan fraksi Mw>=6.5               -0.0185 [-0.0200, -0.0065]    0.932
+
+==============================================================================
+VONIS
+==============================================================================
+
+  Arah yang diramalkan Ide dkk.: b turun ketika amplitudo pasang surut naik,
+  sehingga selisih b(lemah) - b(kuat) positif dan korelasinya negatif.
+
+  p terkecil dari tiga statistik, katalog penuh   : 0.967
+  p terkecil dari tiga statistik, declustered     : 0.676
+
+  Null di sini mengacak amplitudo DI DALAM sel 10 derajat, jadi setiap
+  replikat mempertahankan amplitudo khas tiap wilayah dan magnitudo khas tiap
+  wilayah. Yang dirusak hanya pasangan antara satu gempa dan amplitudonya
+  sendiri, yang memang isi hipotesisnya.
+

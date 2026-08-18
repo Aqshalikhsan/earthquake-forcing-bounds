@@ -1,0 +1,44 @@
+==============================================================================
+UJI TERPADU PER-GEMPA: gaya dibaca DI LOKASI GEMPANYA SENDIRI
+==============================================================================
+  katalog   Global CMT, Mw>=6.0, kedalaman<=70.0 km
+  mentah    4,677 -> declustered 3,533
+  rentang   1976-01-01 .. 2026-03-22
+  null      300 pergeseran melingkar waktu, LOKASI tetap
+    ATMOSPHERE   siap  (3,372 gempa tercakup)
+    IONOSPHERE   siap  (1,907 gempa tercakup)
+    HYDRO        siap  (1,504 gempa tercakup)
+    null: 49 offset tahunan x +/-15 hari jitter = 1,519 pergeseran berbeda (musim tetap)
+==============================================================================
+HASIL PER KELUARGA  (dibaca di episentrum, bukan rerata global)
+==============================================================================
+  'z maks'   simpangan terbesar di keluarga itu, dibakukan oleh null
+  'p'        sudah terkoreksi untuk seluruh variabel dalam keluarga
+  keluarga      n gempa variabel terbaik   z maks        p
+  ------------------------------------------------------------
+  ATMOSPHERE      3,372 atm_rate           2.08    0.107
+  IONOSPHERE      1,907 ion_level          0.57    0.903
+  HYDRO           1,504 hyd_abs            2.21    0.057
+  TIDAL           3,512 phase (Schuster)       --    0.788
+                        R/n = 0.0082
+==============================================================================
+KOREKSI GABUNGAN: min-p lintas keluarga
+==============================================================================
+    keluarga diuji    : 4
+    min-p data asli   : 0.0567
+    min-p pada null   : median 0.1689, minimum 0.0000
+    p TERKOREKSI      : 0.187
+==============================================================================
+CATATAN
+==============================================================================
+  Ini rancangan yang uji daya bilang sanggup menemukan modulasi lokal 5%.
+  Rancangan global-harian di unified_test.py butuh 40-80% untuk hal yang sama,
+  jadi angka p di sini menggantikan angka p keempat keluarga itu di sana --
+  bukan menambahinya.
+  Sampling kausal ditegakkan di semua keluarga: hanya hari SEBELUM waktu asal
+  gempa yang dibaca. Tanpa itu, GRACE memberi p<0,0001 yang ternyata gravitasi
+  ko-seismik, dan TEC akan menangkap gangguan ionosfer yang DISEBABKAN gempa.
+  Yang masih menjadi keterbatasan: HYDRO bercadence bulanan, sehingga jendela
+  kausalnya 10-40 hari sebelum gempa dan jauh lebih tumpul daripada
+  ATMOSPHERE (1-3 hari) atau IONOSPHERE (1-5 hari). TEC hanya mencakup
+  2015-2019, jadi keluarga itu diuji pada beberapa ratus gempa saja.

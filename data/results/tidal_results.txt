@@ -1,0 +1,92 @@
+
+==============================================================================
+TIDAL COULOMB STRESS vs LUNAR PHASE, ON THE SAME EARTHQUAKES
+==============================================================================
+
+  catalogue    Global CMT 1976-2020, Mw >= 5.5, depth <= 70.0 km
+  tidal model  solid-earth body tide, degree 2, Love numbers h2/l2
+               OCEAN LOADING NOT MODELLED -- see the caveat at the end
+  fault plane  shallower-dipping nodal plane
+  significance Bonferroni over 8 declared tests -> p < 0.00625
+
+  catalogue events              : 56830
+  shallow, above threshold      : 13148
+  after declustering            : 9024 (31.4% removed)
+    tidal stress: 250/9024 events    tidal stress: 500/9024 events    tidal stress: 750/9024 events    tidal stress: 1000/9024 events    tidal stress: 1250/9024 events    tidal stress: 1500/9024 events    tidal stress: 1750/9024 events    tidal stress: 2000/9024 events    tidal stress: 2250/9024 events    tidal stress: 2500/9024 events    tidal stress: 2750/9024 events    tidal stress: 3000/9024 events    tidal stress: 3250/9024 events    tidal stress: 3500/9024 events    tidal stress: 3750/9024 events    tidal stress: 4000/9024 events    tidal stress: 4250/9024 events    tidal stress: 4500/9024 events    tidal stress: 4750/9024 events    tidal stress: 5000/9024 events    tidal stress: 5250/9024 events    tidal stress: 5500/9024 events    tidal stress: 5750/9024 events    tidal stress: 6000/9024 events    tidal stress: 6250/9024 events    tidal stress: 6500/9024 events    tidal stress: 6750/9024 events    tidal stress: 7000/9024 events    tidal stress: 7250/9024 events    tidal stress: 7500/9024 events    tidal stress: 7750/9024 events    tidal stress: 8000/9024 events    tidal stress: 8250/9024 events    tidal stress: 8500/9024 events    tidal stress: 8750/9024 events    tidal stress: 9000/9024 events    tidal stress: 9024/9024 events                                                              tidal phase resolved          : 8975
+  dCFS amplitude, median        : 458 Pa (p10 174, p90 909)
+
+==============================================================================
+THE SAME EVENTS, MEASURED TWO WAYS
+==============================================================================
+
+  (a) SSGEOS's instrument -- lunar phase, identical worldwide at a given instant
+
+  lunar phase, harmonic 4 (SSGEOS)   n= 8975  p=  0.2564  R/n=0.0123  mean= 122.0deg  no effect
+  lunar phase, harmonic 2 (tidal)    n= 8975  p=  0.4067  R/n=0.0100  mean=  11.1deg  no effect
+  lunar phase, harmonic 1            n= 8975  p=  0.5292  R/n=0.0084  mean= 236.4deg  no effect
+
+  (b) tidal Coulomb stress at the site, on the event's own fault
+
+  tidal phase of dCFS  <-- PRIMARY   n= 8975  p=  0.4042  R/n=0.0100  mean= 281.7deg  no effect
+
+==============================================================================
+DECLARED SUBSETS
+==============================================================================
+
+  mechanism: thrust                  n= 3393  p=  0.3777  R/n=0.0169  mean= 255.6deg  no effect
+  mechanism: normal                  n= 1210  p=  0.7512  R/n=0.0154  mean= 199.7deg  no effect
+  mechanism: strike-slip             n= 4372  p=  0.4793  R/n=0.0130  mean= 332.3deg  no effect
+
+  amplitude Q1 (weakest tide)        n= 2244  p=  0.9534  R/n=0.0046  mean= 233.8deg  no effect   [0-290 Pa]
+  amplitude Q2                       n= 2244  p=  0.0084  R/n=0.0461  mean= 265.0deg  marginal   [290-458 Pa]
+  amplitude Q3                       n= 2243  p=  0.3057  R/n=0.0230  mean=  45.6deg  no effect   [458-667 Pa]
+  amplitude Q4 (strongest tide)      n= 2244  p=  0.9179  R/n=0.0062  mean= 259.5deg  no effect   [667-9999 Pa]
+
+==============================================================================
+ROBUSTNESS: does the answer depend on which nodal plane is the fault?
+==============================================================================
+
+    tidal stress: 250/9024 events    tidal stress: 500/9024 events    tidal stress: 750/9024 events    tidal stress: 1000/9024 events    tidal stress: 1250/9024 events    tidal stress: 1500/9024 events    tidal stress: 1750/9024 events    tidal stress: 2000/9024 events    tidal stress: 2250/9024 events    tidal stress: 2500/9024 events    tidal stress: 2750/9024 events    tidal stress: 3000/9024 events    tidal stress: 3250/9024 events    tidal stress: 3500/9024 events    tidal stress: 3750/9024 events    tidal stress: 4000/9024 events    tidal stress: 4250/9024 events    tidal stress: 4500/9024 events    tidal stress: 4750/9024 events    tidal stress: 5000/9024 events    tidal stress: 5250/9024 events    tidal stress: 5500/9024 events    tidal stress: 5750/9024 events    tidal stress: 6000/9024 events    tidal stress: 6250/9024 events    tidal stress: 6500/9024 events    tidal stress: 6750/9024 events    tidal stress: 7000/9024 events    tidal stress: 7250/9024 events    tidal stress: 7500/9024 events    tidal stress: 7750/9024 events    tidal stress: 8000/9024 events    tidal stress: 8250/9024 events    tidal stress: 8500/9024 events    tidal stress: 8750/9024 events    tidal stress: 9000/9024 events    tidal stress: 9024/9024 events                                                              fault = np1                        n= 8975  p=  0.4042  R/n=0.0100  mean= 281.7deg  no effect
+    tidal stress: 250/9024 events    tidal stress: 500/9024 events    tidal stress: 750/9024 events    tidal stress: 1000/9024 events    tidal stress: 1250/9024 events    tidal stress: 1500/9024 events    tidal stress: 1750/9024 events    tidal stress: 2000/9024 events    tidal stress: 2250/9024 events    tidal stress: 2500/9024 events    tidal stress: 2750/9024 events    tidal stress: 3000/9024 events    tidal stress: 3250/9024 events    tidal stress: 3500/9024 events    tidal stress: 3750/9024 events    tidal stress: 4000/9024 events    tidal stress: 4250/9024 events    tidal stress: 4500/9024 events    tidal stress: 4750/9024 events    tidal stress: 5000/9024 events    tidal stress: 5250/9024 events    tidal stress: 5500/9024 events    tidal stress: 5750/9024 events    tidal stress: 6000/9024 events    tidal stress: 6250/9024 events    tidal stress: 6500/9024 events    tidal stress: 6750/9024 events    tidal stress: 7000/9024 events    tidal stress: 7250/9024 events    tidal stress: 7500/9024 events    tidal stress: 7750/9024 events    tidal stress: 8000/9024 events    tidal stress: 8250/9024 events    tidal stress: 8500/9024 events    tidal stress: 8750/9024 events    tidal stress: 9000/9024 events    tidal stress: 9024/9024 events                                                              fault = np2                        n= 8962  p=  0.8537  R/n=0.0042  mean= 138.7deg  no effect
+
+==============================================================================
+PHASE DISTRIBUTION OF THE PRIMARY TEST
+==============================================================================
+
+  0 deg = tidal stress maximum. Expected per bin: 748
+
+    0- 30deg   764   +2.2%  #########################
+   30- 60deg   771   +3.1%  #########################
+   60- 90deg   697   -6.8%  ######################
+   90-120deg   720   -3.7%  #######################
+  120-150deg   764   +2.2%  #########################
+  150-180deg   738   -1.3%  ########################
+  180-210deg   745   -0.4%  ########################
+  210-240deg   760   +1.6%  ########################
+  240-270deg   761   +1.7%  ########################
+  270-300deg   742   -0.8%  ########################
+  300-330deg   797   +6.6%  ##########################
+  330-360deg   716   -4.3%  #######################
+
+==============================================================================
+VERDICT
+==============================================================================
+
+  primary test p = 0.4042   threshold for significance p < 0.00625
+
+  The comparison that matters is not this number on its own, but that lunar
+  phase and tidal stress were computed for the SAME 8975 earthquakes.
+  Lunar phase is a single global number: it cannot distinguish an event in Chile
+  from one in Japan at the same instant, and it tracks only the fortnightly
+  spring-neap envelope -- roughly a 20% modulation on top of a semidiurnal tide
+  it cannot see at all. Tidal stress uses the site, the time of day, both bodies'
+  declinations, and the orientation of the fault that actually broke.
+
+  CAVEAT, stated plainly: this models the solid-earth body tide only. Ocean
+  tidal loading is not included, and beneath the sea floor a 1 m ocean tide
+  applies ~10 kPa directly -- an order of magnitude above the body-tide dCFS
+  computed here, and the reason published positive results concentrate on
+  submarine thrusts. A body-tide-only null for those events is expected and is
+  NOT evidence against tidal triggering. The continental strike-slip subset is
+  where this particular test carries the most weight.
+

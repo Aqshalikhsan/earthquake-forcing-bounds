@@ -1,0 +1,54 @@
+==============================================================================
+APAKAH KEDELAPAN GAYA MEMODULASI GEMPA SUSULAN?
+==============================================================================
+  katalog     GCMT dangkal (<= 70 km)
+  induk       Mw >= 6.0: 4,677
+  kandidat    Mw >= 5.0: 42,426
+  induk terpakai      : 3,696
+  gempa susulan       : 10,420
+  jeda induk-susulan  : median 87 hari, maks 1034
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  130 variabel, 8 keluarga
+==============================================================================
+HASIL PER KELUARGA
+==============================================================================
+  'z maks'   simpangan terbesar di keluarga itu, dibakukan oleh null
+  'p'        sudah terkoreksi untuk seluruh variabel dalam keluarga
+  Diuji pada 10,420 gempa susulan dari 3,696 gempa induk.
+  keluarga      n var   z maks        p  variabel terbaik
+  ----------------------------------------------------------------
+  LUNAR            13     1.92    0.233  moon_offset_cardinal
+  TIDAL             8     1.61    0.393  tide_dcfs_with_ocean
+  PLANETARY        80     2.62    0.223  pl_Mercury_elong
+  SOLAR             9     1.67    0.357  sol_ap
+  HYDRO             8     1.18    0.953  hyd_annual_cos
+  ROTATION          5     1.74    0.187  rot_lod
+  ATMOSPHERE        4     2.18    0.087  atm_anom_absmean
+  IONOSPHERE        3     1.02    0.520  ion_tec_mean
+==============================================================================
+KOREKSI GABUNGAN: seluruh keluarga sekaligus
+==============================================================================
+    total variabel    : 130
+    terbaik data asli : z = 2.62  (pl_Mercury_elong)
+    terbaik pada null : rata-rata z = 2.46, maks 3.87
+    p TERKOREKSI      : 0.297
+==============================================================================
+CATATAN
+==============================================================================
+  Null menggeser waktu gempa INDUK dan membawa serta susulannya, sehingga
+  peluruhan Omori terjaga persis dan hanya keselarasan kalender yang dirusak.
+  Tanpa itu, gaya apa pun yang kebetulan meluruh pada skala waktu serupa akan
+  tampak seperti pemicu.
+  Resolusi: bank variabel ini harian dan global. Untuk empat keluarga medan
+  (ATMOSPHERE, HYDRO, IONOSPHERE, TIDAL) itu berarti 98% variasi lokal dibuang
+  -- lihat resolution_test.py. Jadi nol di keempatnya di sini BUKAN batas yang
+  sah; yang sah hanya untuk keluarga yang memang global (LUNAR, PLANETARY,
+  ROTATION, SOLAR).

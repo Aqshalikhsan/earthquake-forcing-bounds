@@ -1,0 +1,37 @@
+# Everything is ignored by default; only data/, src/ and README.md are tracked.
+/*
+!/.gitignore
+!/README.md
+!/data/
+!/src/
+
+# Python build products inside the two tracked trees
+__pycache__/
+*.py[cod]
+
+# -----------------------------------------------------------------------------
+# GitHub refuses any single file larger than 100 MB. The seven files below are
+# over it, so a push containing them is rejected outright.
+#
+# None of them is a result. Each is either a raw download or an array rebuilt
+# from one, and the script that produces it is committed, so the whole tree
+# regenerates from src/ with no manual steps:
+#
+#   data/hydro/grace_obp.nc           886 MB   src/hydro/grace_hydro2.py
+#   data/hydro/grace_tws.nc           507 MB   src/hydro/grace_hydro2.py
+#   data/thermal/olr.day.mean.nc      333 MB   src/thermal/fetch_olr.py
+#   data/ionosphere/tec_daily.npy     183 MB   src/ionosphere/fetch_tec.py
+#   data/thermal/surf_air_cells.npy   149 MB   src/thermal/fetch_surface.py
+#   data/thermal/surf_pwat_cells.npy  143 MB   src/thermal/fetch_surface.py
+#   data/thermal/olr_cells.npy        129 MB   src/thermal/fetch_olr.py
+#
+# To distribute the binaries themselves, use Git LFS or deposit them with a DOI
+# and cite that instead. Everything else under data/ and src/ is committed.
+# -----------------------------------------------------------------------------
+data/hydro/grace_obp.nc
+data/hydro/grace_tws.nc
+data/thermal/olr.day.mean.nc
+data/ionosphere/tec_daily.npy
+data/thermal/surf_air_cells.npy
+data/thermal/surf_pwat_cells.npy
+data/thermal/olr_cells.npy

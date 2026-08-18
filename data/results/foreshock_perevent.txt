@@ -1,0 +1,50 @@
+==============================================================================
+FORESHOCK DI LOKASINYA SENDIRI — LUBANG FORMAL TERAKHIR
+==============================================================================
+  kandidat    Mw >= 5.0 dangkal : 42,426
+  foreshock   disusul Mw >= 6.0 dalam 100 km / 15 hari : 2,388
+  bukan                                                : 40,038
+  rentang     1976-01-01 .. 2026-03-31
+    ATMOSPHERE   siap  (36,136 kandidat tercakup)
+    IONOSPHERE   siap  (29,616 kandidat tercakup)
+    HYDRO        siap  (24,137 kandidat tercakup)
+    null: 49 offset tahunan x +/-15 hari = 1,519 pergeseran (musim tetap)
+  mu, sd = np.nanmean(nb, axis=0), np.nanstd(nb, axis=0)
+==============================================================================
+HASIL PER KELUARGA  (dibaca di episentrum kandidat)
+==============================================================================
+  Membandingkan 2,388 foreshock dengan 40,038 gempa kecil biasa,
+  masing-masing dibaca di lokasinya sendiri.
+  keluarga     variabel         z maks        p
+  ------------------------------------------------
+  ATMOSPHERE   atm_level          2.45    0.025  <-- LOLOS
+  IONOSPHERE   ion_rate           0.51    0.920
+  HYDRO        hyd_level          1.96    0.115
+  mu, sd = np.nanmean(nb, axis=0), np.nanstd(nb, axis=0)
+  TIDAL        phase(Schuster)       --    0.744
+               n = 2,380   R/n = 0.0111
+==============================================================================
+KOREKSI GABUNGAN: min-p lintas keluarga
+==============================================================================
+    keluarga diuji    : 4
+    min-p data asli   : 0.0250
+    min-p pada null   : median 0.1658, minimum 0.0000
+    p TERKOREKSI      : 0.100
+==============================================================================
+UJI STABILITAS: apakah ATMOSPHERE bertahan di KEDUA separuh katalog?
+==============================================================================
+  separuh awal    n foreshock 1,094   variabel atm_abs      z  1.15   p  0.565
+  separuh akhir   n foreshock 1,294   variabel atm_level    z  2.36   p  0.045
+==============================================================================
+VONIS
+==============================================================================
+  p terkecil dalam keluarga           : 0.025
+  p setelah koreksi gabungan          : 0.100
+  TIDAK ADA yang lolos setelah koreksi gabungan.
+  Dengan ini ketiga kelas gempa sudah diuji pada resolusi penuh:
+      foreshock      perevent  <- berkas ini
+      gempa induk    perevent_test.py          p = 0,187
+      gempa susulan  aftershock_perevent.py    p = 0,273
+  Tidak ada lubang formal yang tersisa: setiap keluarga sudah diuji pada
+  resolusi yang dimilikinya, pada ketiga kelas gempa, dengan null yang
+  menjaga musim dan sampling yang menjaga arah sebab-akibat.

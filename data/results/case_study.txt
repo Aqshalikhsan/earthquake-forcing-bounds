@@ -1,0 +1,104 @@
+==============================================================================
+SATU GEMPA NYATA, HARI PER HARI: apa yang dikatakan tiap model
+==============================================================================
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  LANGIT 130 variabel   |   ETAS 3 variabel (laju Omori lokal)
+==============================================================================
+Palu, Sulawesi Tengah — M7,5, 2018-09-28
+==============================================================================
+  target    ada gempa M>=6,0 dalam 500 km dari Palu
+  latih     1970-01-01 .. 2017-09-07
+            (dihentikan 365 hari sebelum jendela ini)
+  laju dasar 0.2% per hari
+    hari      tanggal    LANGIT      ETAS   kenyataan
+  ----------------------------------------------------------
+    X-20   2018-09-08      0.1%      0.1%   
+    X-19   2018-09-09      0.1%      0.1%   
+    X-18   2018-09-10      0.1%      0.1%   
+    X-17   2018-09-11      0.1%      0.1%   
+    X-16   2018-09-12      0.1%      0.1%   
+    X-15   2018-09-13      0.1%      0.1%   
+    X-14   2018-09-14      0.1%      0.1%   
+    X-13   2018-09-15      0.1%      0.1%   
+    X-12   2018-09-16      0.1%      0.1%   
+    X-11   2018-09-17      0.1%      0.1%   
+    X-10   2018-09-18      0.1%      0.1%   
+     X-9   2018-09-19      0.1%      0.1%   
+     X-8   2018-09-20      0.1%      0.1%   
+     X-7   2018-09-21      0.1%      0.1%   
+     X-6   2018-09-22      0.1%      0.2%   
+     X-5   2018-09-23      0.1%      0.2%   
+     X-4   2018-09-24      0.1%      0.1%   
+     X-3   2018-09-25      0.1%      0.1%   
+     X-2   2018-09-26      0.1%      0.2%   
+     X-1   2018-09-27      0.1%      0.3%   
+       X   2018-09-28      0.1%      0.3%   <<< GEMPA M7,5
+     X+1   2018-09-29      0.1%      0.7%   
+     X+2   2018-09-30      0.1%      0.7%   
+     X+3   2018-10-01      0.1%      0.7%   
+     X+4   2018-10-02      0.1%      0.7%   
+     X+5   2018-10-03      0.1%      0.7%   
+  Rentang 20 hari sebelum gempa   LANGIT 0.1-0.1%   ETAS 0.1-0.3%
+  Periode tenang (X-400..X-200)   LANGIT 0.1%        ETAS 0.2%
+  Kalau angka di dua baris itu mirip, model tidak sedang memperingatkan
+  apa pun -- ia hanya mengulang kebiasaannya.
+==============================================================================
+Lombok, NTB — M6,9, 2018-08-05
+==============================================================================
+  target    ada gempa M>=6,0 dalam 500 km dari Lombok
+  latih     1970-01-01 .. 2017-07-15
+            (dihentikan 365 hari sebelum jendela ini)
+  laju dasar 0.2% per hari
+    hari      tanggal    LANGIT      ETAS   kenyataan
+  ----------------------------------------------------------
+    X-20   2018-07-16      0.1%      0.2%   
+    X-19   2018-07-17      0.0%      0.0%   
+    X-18   2018-07-18      0.1%      0.3%   
+    X-17   2018-07-19      0.0%      0.2%   
+    X-16   2018-07-20      0.0%      0.4%   
+    X-15   2018-07-21      0.1%      0.3%   
+    X-14   2018-07-22      0.3%      0.3%   
+    X-13   2018-07-23      0.1%      0.1%   
+    X-12   2018-07-24      0.1%      0.1%   
+    X-11   2018-07-25      0.1%      0.4%   
+    X-10   2018-07-26      0.1%      0.2%   
+     X-9   2018-07-27      0.1%      0.1%   
+     X-8   2018-07-28      0.0%      0.1%   gempa M>=6
+     X-7   2018-07-29      0.0%      6.4%   
+     X-6   2018-07-30      0.1%      7.4%   
+     X-5   2018-07-31      0.0%      0.7%   
+     X-4   2018-08-01      0.0%      0.5%   
+     X-3   2018-08-02      0.0%      0.5%   
+     X-2   2018-08-03      0.0%      0.4%   
+     X-1   2018-08-04      0.0%      0.2%   
+       X   2018-08-05      0.0%      0.2%   <<< GEMPA M6,9
+     X+1   2018-08-06      0.0%      6.4%   
+     X+2   2018-08-07      0.0%      7.4%   
+     X+3   2018-08-08      0.0%      7.4%   
+     X+4   2018-08-09      0.0%      7.4%   
+     X+5   2018-08-10      0.0%      6.4%   
+  Rentang 20 hari sebelum gempa   LANGIT 0.0-0.3%   ETAS 0.0-7.4%
+  Periode tenang (X-400..X-200)   LANGIT 0.0%        ETAS 0.2%
+  Kalau angka di dua baris itu mirip, model tidak sedang memperingatkan
+  apa pun -- ia hanya mengulang kebiasaannya.
+==============================================================================
+CARA MEMBACANYA
+==============================================================================
+  Kolom LANGIT adalah jawaban atas pertanyaan Anda: "gempa terjadi hari X,
+  model bilang apa di hari Y". Lihat pergerakannya menjelang hari X, lalu
+  bandingkan dengan periode tenang di bawahnya.
+  Yang dicari bukan angka yang tinggi, melainkan angka yang NAIK tepat sebelum
+  gempa dan TIDAK naik di waktu lain. Angka tinggi setiap hari bukan
+  peringatan; itu cuma kebiasaan model, dan kalau dipakai akan menyalakan
+  alarm sepanjang tahun.
+  Kolom ETAS memperlihatkan bentuk yang sebaliknya: datar sebelum gempa, lalu
+  melonjak SETELAHNYA. Itu jujur -- ia tidak mengaku tahu lebih dulu, ia hanya
+  tahu bahwa kerak yang baru patah akan patah lagi.

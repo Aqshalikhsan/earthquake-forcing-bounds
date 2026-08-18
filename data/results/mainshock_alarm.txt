@@ -1,0 +1,54 @@
+==============================================================================
+BISAKAH GEMPA UTAMA DIPERINGATKAN? (bukan susulan)
+==============================================================================
+  katalog   GCMT dangkal            : 58,382
+  Mw>=6.0                        : 4,677
+  setelah declustering (UTAMA)     : 3,694
+                                     <- inilah yang harus diperingatkan
+  rentang   1976-01-01 .. 2026-03-31
+  Aturan alarm: setelah gempa Mw>=Mt, siaga 100 km selama D hari.
+==============================================================================
+JENDELA 7 HARI, RADIUS 100 KM
+==============================================================================
+    pemicu    n alarm   tertangkap   kebetulan   kelipatan
+  ----------------------------------------------------------
+  Mw>=4.5      58,381        12.2%        3.1%        4.0x   <- di bawah completeness
+  Mw>=5.0      42,426        10.8%        2.5%        4.4x
+  Mw>=5.5      14,884         6.9%        1.1%        6.1x
+  Mw>=6.0       4,677         3.2%        0.4%        8.3x
+==============================================================================
+JENDELA 15 HARI, RADIUS 100 KM
+==============================================================================
+    pemicu    n alarm   tertangkap   kebetulan   kelipatan
+  ----------------------------------------------------------
+  Mw>=4.5      58,381        15.4%        6.0%        2.6x   <- di bawah completeness
+  Mw>=5.0      42,426        13.6%        5.0%        2.7x
+  Mw>=5.5      14,884         8.8%        2.1%        4.2x
+  Mw>=6.0       4,677         4.1%        0.7%        5.6x
+==============================================================================
+JENDELA 30 HARI, RADIUS 100 KM
+==============================================================================
+    pemicu    n alarm   tertangkap   kebetulan   kelipatan
+  ----------------------------------------------------------
+  Mw>=4.5      58,381        20.0%       10.8%        1.8x   <- di bawah completeness
+  Mw>=5.0      42,426        17.4%        8.9%        2.0x
+  Mw>=5.5      14,884        10.9%        4.0%        2.7x
+  Mw>=6.0       4,677         5.1%        1.6%        3.3x
+==============================================================================
+ARTINYA
+==============================================================================
+  Baca kolom 'tertangkap' dan 'kelipatan' BERSAMAAN.
+  Menurunkan ambang pemicu menaikkan jumlah gempa utama yang tertangkap --
+  tetapi juga menaikkan berapa sering alarm dinyalakan, sehingga kolom
+  'kebetulan' ikut naik. Kelipatan adalah satu-satunya kolom yang sudah
+  memperhitungkan harga itu: ia membagi hasil dengan seberapa banyak alarm
+  yang dihabiskan.
+  Foreshock itu NYATA -- sebagian gempa utama memang didahului gempa kecil di
+  struktur yang sama. Yang tidak nyata adalah kemampuan membedakannya di muka:
+  gempa kecil terjadi ribuan kali setiap tahun, dan hampir semuanya tidak
+  diikuti apa-apa. Itulah sebabnya kelipatan tetap sederhana walaupun
+  'tertangkap' terlihat besar.
+  Bandingkan dengan peramalan susulan (window_forecast.py): di sana kelipatan
+  mencapai 14-19x pada irisan 12% gempa. Di sini irisan bisa jauh lebih besar,
+  tetapi kelipatannya jatuh -- dan itu pertukaran yang sesungguhnya, bukan
+  kegagalan perangkat lunak.

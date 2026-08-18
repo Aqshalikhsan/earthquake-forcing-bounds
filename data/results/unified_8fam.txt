@@ -1,0 +1,104 @@
+
+==============================================================================
+UJI TERPADU: LIMA KELUARGA GAYA LUAR, SATU KERANGKA
+==============================================================================
+
+  katalog   global M>=6.0, 1970-01-01 .. 2024-12-31
+  hari      20,089   laju dasar 28.89%
+  null      400 pergeseran melingkar, pencarian penuh tiap kali
+
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+
+  total 130 variabel dari 8 keluarga
+
+  cakupan data per variabel (hari isian tidak diuji):
+
+  keluarga     variabel                     cakupan      hari
+  ------------------------------------------------------------
+  SOLAR        sol_f107                       36.7%     7,371  <-- sebagian besar isian
+  HYDRO        hyd_grace_land                 41.3%     8,295  <-- sebagian besar isian
+  HYDRO        hyd_grace_absload              41.3%     8,295  <-- sebagian besar isian
+  HYDRO        hyd_grace_rate                 41.3%     8,295  <-- sebagian besar isian
+  IONOSPHERE   ion_tec_mean                   49.1%     9,863  <-- sebagian besar isian
+  IONOSPHERE   ion_tec_absmean                49.1%     9,863  <-- sebagian besar isian
+  IONOSPHERE   ion_tec_spread                 49.1%     9,863  <-- sebagian besar isian
+  SOLAR        sol_proton_density             52.7%    10,594  <-- sebagian besar isian
+
+  118 dari 130 variabel mencakup seluruh rekaman
+    null 100/400    null 200/400    null 300/400    null 400/400                              
+==============================================================================
+HASIL PER KELUARGA
+==============================================================================
+
+  'terukur'  modulasi laju terbesar yang ditemukan di keluarga itu
+  'ambang'   modulasi yang akan terdeteksi (persentil 95 dari null)
+  'p'        sudah terkoreksi untuk jumlah variabel dalam keluarga
+
+  keluarga      n var   terukur   ambang       p  variabel terbaik
+  ------------------------------------------------------------------------------
+  LUNAR            13     2.57%    3.41%   0.615  moon_declination
+  TIDAL             8     3.01%    2.97%   0.048  tide_dcfs_abs <-- LOLOS
+  PLANETARY        80     5.60%    9.03%   0.590  pl_geo_Saturn_Uranus
+  SOLAR             9     3.38%    5.97%   0.843  sol_f107
+  HYDRO             8     4.74%    7.82%   0.598  hyd_grace_land
+  ROTATION          5     6.69%    8.88%   0.460  rot_lod_decadal
+  ATMOSPHERE        4     2.92%    3.10%   0.105  atm_anom_spread
+  IONOSPHERE        3     2.70%    4.84%   0.863  ion_tec_absmean
+  ------------------------------------------------------------------------------
+  ETAS (acuan)      4     9.19%    5.80%   0.005  etas_rate <-- LOLOS
+
+==============================================================================
+KOREKSI GABUNGAN: seluruh keluarga sekaligus
+==============================================================================
+
+  Menggabungkan SELURUH 8 keluarga (130 variabel) dan
+  memberi null kebebasan mencari di seluruhnya:
+
+    terbaik data asli : 6.69%  (rot_lod_decadal)
+    terbaik pada null : rata-rata 7.52%, maks 11.20%
+    p terkoreksi      : 0.752
+
+
+==============================================================================
+TABEL BATAS ATAS  (produk utama)
+==============================================================================
+
+  Modulasi laju gempa yang masih mungkin bersembunyi di tiap keluarga,
+  relatif terhadap laju dasar 28.9%:
+
+  keluarga         batas modulasi   setara relatif
+  --------------------------------------------------
+  LUNAR                     3.41%            11.8%
+  TIDAL                     2.97%            10.3%
+  PLANETARY                 9.03%            31.3%
+  SOLAR                     5.97%            20.7%
+  HYDRO                     7.82%            27.1%
+  ROTATION                  8.88%            30.7%
+  ATMOSPHERE                3.10%            10.7%
+  IONOSPHERE                4.84%            16.8%
+  ETAS (acuan)              9.19%            31.8%   <- terukur, bukan batas
+
+==============================================================================
+CATATAN
+==============================================================================
+
+  HYDRO di sini memakai harmonik tahunan dan semi-tahunan sebagai proksi beban
+  air musiman -- tanda tangan yang dideteksi studi Himalaya dan California.
+  Slot GRACE tersedia di forcing_bank.load_grace() dan belum diisi; mengisinya
+  akan mengubah HYDRO dari proksi menjadi beban air terukur, dan itu satu-satunya
+  keluarga yang masih punya peluang hasil positif.
+
+  Semua variabel diuji pada satu situs acuan untuk keluarga TIDAL dan komponen
+  pasang surut PLANETARY (palung Jawa). Untuk target global ini itu pilihan
+  konservatif: tegangan pasang surut bersifat lokal, sehingga satu situs
+  meremehkan efek yang mungkin ada di tempat lain. Versi per-event ada di
+  src/tidal/tidal_analysis.py dan tetap null.
+

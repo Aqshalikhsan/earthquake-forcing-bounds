@@ -1,0 +1,118 @@
+==============================================================================
+KENAPA KOLOM 'JEDA' BUKAN PREDIKSI HARI
+==============================================================================
+  katalog  global M>=6,0, 1970-01-01 .. 2024-12-31
+  hari     20,089   laju dasar 28.89%
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+  1,300 pasangan (variabel x jeda)
+==============================================================================
+UJI 1 — TABEL YANG SAMA, TAPI DARI DERAU MURNI
+==============================================================================
+  Seismisitas digeser melingkar, sehingga tidak mungkin ada hubungan nyata
+  yang tersisa. Kalau tabel hasil geseran terlihat sama meyakinkannya,
+  berarti formatnya yang menciptakan kesan hasil, bukan datanya.
+  DATA ASLI
+  keluarga       jeda   terukur  variabel
+  ------------------------------------------------------------
+  LUNAR           14d     3.20%  moon_h1_sin
+  TIDAL           10d     3.37%  ocean_load_abs
+  PLANETARY       30d     5.51%  pl_helio_Saturn_Uranus
+  SOLAR           14d     4.87%  sol_ram_pressure
+  HYDRO           21d     4.91%  hyd_grace_land
+  ROTATION        21d     7.05%  rot_lod_decadal
+  ATMOSPHERE       0d     2.97%  atm_anom_spread
+  IONOSPHERE      21d     4.07%  ion_tec_absmean
+  DERAU #1  (tidak ada sinyal sama sekali)
+  keluarga       jeda   terukur  variabel
+  ------------------------------------------------------------
+  LUNAR            2d     2.87%  moon_h1_cos
+  TIDAL            7d     3.23%  tide_dcfs_sun
+  PLANETARY        0d     7.80%  pl_geo_Saturn_Uranus
+  SOLAR            5d     6.53%  sol_f107
+  HYDRO            3d     5.51%  hyd_grace_absload
+  ROTATION         7d     5.90%  rot_lod_decadal
+  ATMOSPHERE       2d     3.31%  atm_anom_spread
+  IONOSPHERE       7d     6.59%  ion_tec_mean
+  DERAU #2  (tidak ada sinyal sama sekali)
+  keluarga       jeda   terukur  variabel
+  ------------------------------------------------------------
+  LUNAR            7d     3.25%  sun_distance
+  TIDAL            1d     3.14%  tide_dcfs_lunisolar
+  PLANETARY        0d     8.30%  pl_geo_Uranus_Neptune
+  SOLAR            7d     7.12%  sol_dst
+  HYDRO           30d     5.61%  hyd_grace_rate
+  ROTATION         0d     6.40%  rot_lod_decadal
+  ATMOSPHERE       0d     3.22%  atm_anom_spread
+  IONOSPHERE       1d     5.31%  ion_tec_spread
+  DERAU #3  (tidak ada sinyal sama sekali)
+  keluarga       jeda   terukur  variabel
+  ------------------------------------------------------------
+  LUNAR           21d     3.27%  moon_declination
+  TIDAL           21d     3.22%  tide_dcfs_sun
+  PLANETARY        0d     5.06%  pl_helio_Saturn_Uranus
+  SOLAR           30d     5.13%  sol_ram_pressure
+  HYDRO            1d     7.00%  hyd_grace_absload
+  ROTATION        21d     5.70%  rot_lod_decadal
+  ATMOSPHERE      21d     3.12%  atm_anom_absmean
+  IONOSPHERE      14d     6.67%  ion_tec_mean
+==============================================================================
+UJI 2 — APAKAH JEDA ITU MUNCUL LAGI DI SEPARUH KATALOG YANG LAIN?
+==============================================================================
+  Jeda yang nyata adalah sifat fisika: ia harus muncul di kedua separuh
+  katalog. Jeda yang terambil dari derau tidak akan terulang, karena derau
+  di separuh pertama berbeda dari separuh kedua.
+  SEPARUH AWAL
+  keluarga       jeda   terukur  variabel
+  ------------------------------------------------------------
+  LUNAR            5d     5.87%  moon_h1_sin
+  TIDAL            7d     4.72%  tide_dcfs_abs
+  PLANETARY       30d     9.12%  pl_helio_Saturn_Neptune
+  SOLAR           30d     7.69%  sol_ap
+  HYDRO            5d     3.37%  hyd_dayofyear
+  ROTATION        30d     5.91%  rot_lod_decadal
+  ATMOSPHERE      10d     4.53%  atm_anom_spread
+  IONOSPHERE       0d     0.00%  ion_tec_mean
+  SEPARUH AKHIR
+  keluarga       jeda   terukur  variabel
+  ------------------------------------------------------------
+  LUNAR           14d     4.42%  sun_distance
+  TIDAL           21d     4.15%  tide_dcfs_moon
+  PLANETARY        3d     8.35%  pl_geo_Saturn_Neptune
+  SOLAR            0d     4.36%  sol_kp
+  HYDRO           21d     5.02%  hyd_semiannual_cos
+  ROTATION         1d     4.88%  rot_lod_abs
+  ATMOSPHERE       2d     4.73%  atm_anom_mean
+  IONOSPHERE      30d     3.31%  ion_tec_spread
+  keluarga        awal   akhir   selisih   cocok?
+  ------------------------------------------------------
+  LUNAR             5d     14d        9d   tidak
+  TIDAL             7d     21d       14d   tidak
+  PLANETARY        30d      3d       27d   tidak
+  SOLAR            30d      0d       30d   tidak
+  HYDRO             5d     21d       16d   tidak
+  ROTATION         30d      1d       29d   tidak
+  ATMOSPHERE       10d      2d        8d   tidak
+  IONOSPHERE        0d     30d       30d   tidak
+  cocok pada 0 dari 8 keluarga
+==============================================================================
+KESIMPULAN
+==============================================================================
+  Kolom 'jeda' selalu terisi, apa pun datanya. Maksimum dari sepuluh angka
+  selalu ada, bahkan ketika kesepuluh angka itu murni derau -- dan tabel
+  DERAU di atas membuktikannya: bentuknya sama persis, angkanya sama
+  masuk akalnya, padahal di sana dijamin tidak ada apa-apa.
+  Yang memisahkan temuan dari kebetulan bukan kolom 'jeda', melainkan
+  perbandingan 'terukur' dengan 'ambang' di lag_sweep.py. Di sana kedelapan
+  keluarga berada DI BAWAH ambangnya masing-masing, dan yang terbaik pada
+  data asli (7,05%) bahkan lebih kecil daripada rata-rata yang ditemukan
+  derau (7,77%).
+  Uji separuh katalog menutupnya: jeda 'terbaik' hanya cocok di 0 dari
+  8 keluarga. Jeda yang nyata akan cocok di semuanya.

@@ -1,0 +1,124 @@
+
+==============================================================================
+MACHINE LEARNING PER-GEMPA: medan dibaca di sel gempanya sendiri
+==============================================================================
+
+  katalog GCMT   42,426 gempa Mw>=5.0, kedalaman<=70 km
+  target         3,533 gempa utama Mw>=6.0 setelah declustering
+  membangun daftar tetangga untuk 3,533 gempa ...
+  baris          35,485  (3,533 kasus, 31,952 kontrol)
+  tanggal rata-rata  kasus 730,618 vs kontrol 730,475  (selisih 143 hari)
+
+==============================================================================
+MEMBANGUN FITUR
+==============================================================================
+
+  memakai fitur tersimpan: ml_features_mw6.0_c10.npz
+
+  split kronologis : latih 25,674 -> uji 9,811
+  split acak       : latih 24,839 -> uji 10,646
+
+==============================================================================
+HASIL: AUC PER BLOK FITUR
+==============================================================================
+
+  blok                        AUC kronologis    AUC acak
+  --------------------------------------------------------
+  LOCAL (medan per-sel)               0.4616      0.5270
+  LOCAL + TIDAL                       0.4633      0.5127
+  GLOBAL (bank harian)                0.3228      0.5304
+  SEMUA GAYA LUAR                     0.3234      0.5300
+  SEISMIC (referensi)                 0.6222      0.6140
+
+==============================================================================
+PERINGKAT DI DALAM KUMPULAN: metrik yang tepat untuk desain berpasangan
+==============================================================================
+
+  3 lipatan maju, dirata-ratakan
+
+  blok                          top-1   peluang     MRR         p
+  --------------------------------------------------------------
+  LOCAL (medan per-sel)          6.1%     10.3%   0.240     0.996
+  LOCAL + TIDAL                  6.3%     10.3%   0.239     0.991
+  GLOBAL (bank harian)           0.0%     10.3%   0.166     1.000
+  SEMUA GAYA LUAR                0.0%     10.3%   0.170     1.000
+  SEISMIC (referensi)           31.0%     10.3%   0.456     0.000
+
+  (706 gempa per lipatan uji)
+
+==============================================================================
+KALIBRASI: label diacak di dalam kumpulan kandidat tiap gempa
+==============================================================================
+
+  AUC dengan label acak (5 ulangan): 0.5035, 0.5060, 0.5045, 0.4774, 0.4839
+  rata-rata 0.4950  (harus di sekitar 0,50)
+
+==============================================================================
+PER KELUARGA: batas atas ML untuk tiap medan, sendiri-sendiri
+==============================================================================
+
+  keluarga    AUC kronologis    AUC acak
+  ----------------------------------------
+  atm                 0.5003      0.5036
+  ion                 0.5030      0.5227
+  hyd                 0.4880      0.5062
+  olr                 0.4704      0.4968
+  air                 0.5080      0.5066
+  pwat                0.5078      0.4944
+  tide                0.5097      0.4911
+
+==============================================================================
+POSITIVE CONTROL: seberapa besar efek yang MAMPU ditemukan model ini
+==============================================================================
+
+  sinyal ditanam pada atm_abs, dinilai pada blok LOCAL
+
+    fraksi gempa terpicu       AUC     top-1         p
+  -----------------------------------------------------
+                      0%    0.4616      9.1%     0.994  <- data asli
+                      5%    0.4666      9.8%     0.959
+                     10%    0.4819     11.3%     0.551
+                     20%    0.5132     14.7%     0.001
+                     40%    0.5846     21.2%     0.000
+                     70%    0.7480     42.5%     0.000
+                    100%    0.8598     59.3%     0.000
+
+==============================================================================
+AUDIT KEBOCORAN: apa yang sebenarnya dipelajari model
+==============================================================================
+
+  menebak TANGGAL dari 130 variabel global : R2 = 0.9862
+
+  AUC blok GLOBAL, kronologis 0.3228
+  AUC blok GLOBAL, acak       0.5304
+  selisih akibat cara membagi +0.2076
+
+  AUC blok LOCAL, kronologis  0.4616
+  AUC blok LOCAL, acak        0.5270
+  selisih akibat cara membagi +0.0654
+
+
+==============================================================================
+VONIS
+==============================================================================
+
+  Kontrol dipasangkan pada sel yang sama dan musim yang sama, dan tanggal
+  rata-rata kedua kelas hanya berbeda 143 hari. Jadi lokasi,
+  musim dan pertumbuhan katalog TIDAK bisa menjadi yang dipelajari model.
+
+  Ditanya pertanyaan yang tepat untuk desain ini -- dari sekian hari yang
+  mungkin, di tempat dan musim yang sama, mana yang benar-benar hari gempa --
+  peluang murni adalah 10.3%.
+
+  Gaya luar pada resolusi aslinya    top-1 6.1%   AUC 0.4616
+  Seluruh gaya luar digabung                         AUC 0.3234
+  Seismisitas terkini (referensi)    top-1 31.0%   AUC 0.6222
+
+  Referensi seismik naik 3.0x di atas peluang pada lipatan yang
+  sama, p < 0,001. Gaya luar tidak naik sama sekali.
+
+  Model dan data yang sama menemukan sinyal tanam sebesar 20% pada
+  p < 0,01. Jadi batas atas versi ML adalah: efek yang memindahkan lebih dari
+  20% gempa ke hari medan ekstrem PASTI tertangkap. Tidak ada yang
+  tertangkap. Nol di atas adalah pengukuran, bukan kegagalan alat.
+

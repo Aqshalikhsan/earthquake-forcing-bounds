@@ -1,0 +1,73 @@
+
+==============================================================================
+KEDELAPAN KELUARGA DIGABUNG JADI SATU PREDIKTOR
+==============================================================================
+
+  target   ada gempa M>=6,0 di Bumi pada hari itu
+  hari     20,089   laju dasar 28.89%
+  validasi 6 lipatan blok waktu, selalu memprediksi ke DEPAN
+
+  membangun bank variabel:
+    LUNAR        13 variabel
+    TIDAL         8 variabel
+    PLANETARY    80 variabel
+    SOLAR         9 variabel
+    HYDRO         8 variabel
+    ROTATION      5 variabel
+    ATMOSPHERE    4 variabel
+    IONOSPHERE    3 variabel
+
+  SKY  130 variabel | ETAS 8 | BOTH 138
+
+==============================================================================
+HASIL
+==============================================================================
+
+  SKY (8 keluarga, tanpa seismologi)   AUC=0.4945  IG=-0.00131  Brier=0.21544 (dasar 0.21495)
+  ETAS (seismologi, tanpa langit)      AUC=0.5317  IG=+0.00402  Brier=0.21326 (dasar 0.21495)
+  BOTH (digabung)                      AUC=0.5097  IG=+0.00014  Brier=0.21479 (dasar 0.21495)
+
+==============================================================================
+PERTANYAAN YANG SEBENARNYA: apakah langit MENAMBAH sesuatu?
+==============================================================================
+
+    ETAS sendirian     AUC 0.5317   IG +0.00402
+    ETAS + langit      AUC 0.5097   IG +0.00014
+    ------------------------------------------------------
+    sumbangan langit   AUC -0.0220   IG -0.00388
+
+  Menambahkan kedelapan keluarga MEMPERBURUK model. Kapasitas model
+  terpakai untuk mencocokkan derau, dan itu merugikan di data uji.
+
+==============================================================================
+KALAU DIPAKSA MERAMAL: seberapa jauh probabilitasnya bergerak?
+==============================================================================
+
+    model LANGIT   keluaran 18.8% .. 44.6%   (rentang 25.8 poin)
+    model ETAS     keluaran 19.9% .. 55.4%   (rentang 35.5 poin)
+    klimatologi    30.9% setiap hari
+
+  kalibrasi model LANGIT:    diprediksi    kenyataan    n hari
+  --------------------------------------------------
+                                  24.2%        32.6%     2,411
+                                  27.6%        29.9%     2,411
+                                  29.3%        30.0%     2,410
+                                  31.0%        31.6%     2,411
+                                  34.0%        30.6%     2,411
+
+==============================================================================
+VONIS
+==============================================================================
+
+  AUC 0,50 = lempar koin.
+
+  Menggabungkan delapan keluarga tidak menciptakan keterampilan yang tidak
+  dimiliki komponennya. Penggabungan menolong ketika tiap masukan membawa
+  sedikit informasi yang saling melengkapi -- misalnya tiga variabel di AUC 0,52
+  bisa menumpuk jadi 0,56. Di sini tiap masukan diukur di 0,45-0,50, yaitu pada
+  atau di bawah kebetulan, dan menjumlahkan nol tetap nol.
+
+  Efek keduanya terlihat di baris BOTH: menambah 130 kolom derau ke model
+  yang sudah bekerja justru menurunkannya, karena sebagian kapasitas terpakai
+  untuk mencocokkan pola yang tidak akan terulang.
+
