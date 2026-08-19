@@ -47,6 +47,7 @@ against reference scales measured on a real study.</p>
     <button class="ghost" data-example="null">no signal</button>
     <button class="ghost" data-example="calendar">calendar leak</button>
     <button class="ghost" data-example="lookahead">lookahead window</button>
+    <button class="ghost" data-example="cluster">aftershock clustering</button>
   </div>
 </div>
 
@@ -127,7 +128,8 @@ ensemble is re-evaluated with an independent implementation and compared
 against scikit-learn, which agrees to <span class="num">0</span> exactly. And
 the fifteen fingerprint axes, reimplemented here, are compared against the
 Python originals on test series, agreeing to
-<span class="num">2.7 × 10⁻¹¹</span> in the worst case. Both checks fail the
+<span class="num">2.7 × 10⁻¹¹</span> in the worst case, and to machine
+precision on fourteen of the fifteen. Both checks fail the
 build rather than shipping a silent disagreement.</p>
 
 <footer>

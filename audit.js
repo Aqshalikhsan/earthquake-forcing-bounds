@@ -9,6 +9,7 @@
 
 import { fingerprint, FEATURES, checkRandom } from "./fingerprint.js";
 import { axisScale } from "./battery.js";
+import { realEvents } from "./events.js";
 
 const COLOUR = {
   REAL: "#2f6b4a", NULL: "#8a8a8a", CALENDAR: "#b8862f",
@@ -129,41 +130,93 @@ function parse(text) {
 }
 
 /* ------------------------------------------------------------- examples */
+/*
+ * Built on the real catalogue, not on a random target.
+ *
+ * The first version of these used a synthetic event series, and every example
+ * landed outside the range the model was calibrated on: the tool refused to
+ * answer, which looks like a fault rather than the correct behaviour it is.
+ * The generators below mirror src/audit/generate.py, so an example lands where
+ * the training examples of that class do.
+ */
 function xorshift(seed) {
   let x = seed >>> 0;
-  return () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; };
+  return () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0;
+                 return x / 4294967296; };
 }
 
-function example(kind) {
-  const n = 6000, r = xorshift(99), x = [], y = [];
-  const w = [];
-  for (let i = 0; i < n; i++) w.push(r() * 2 - 1);
-  const smooth = w.map((_, i) => {
-    let s = 0, c = 0;
-    for (let j = i - 12; j <= i + 12; j++) if (j >= 0 && j < n) { s += w[j]; c++; }
-    return s / c;
-  });
+function smooth(n, scale, r) {
+  const w = Array.from({ length: n }, () => r() * 2 - 1);
+  const h = Math.floor(scale / 2);
+  const out = new Array(n);
   for (let i = 0; i < n; i++) {
-    x.push(kind === "calendar"
-      ? Math.sin((2 * Math.PI * i) / 733) + 0.3 * Math.sin((2 * Math.PI * i) / 297)
-      : smooth[i] * 6);
-    y.push(r() < 0.29 ? 1 : 0);
+    let s = 0, c = 0;
+    for (let j = i - h; j <= i + h; j++) if (j >= 0 && j < n) { s += w[j]; c++; }
+    out[i] = s / c;
   }
-  if (kind === "real") {                      // move a quarter of events high
-    const order = x.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]);
-    const top = order.slice(0, Math.floor(n * 0.2)).map((q) => q[1]);
+  const m = out.reduce((a, v) => a + v, 0) / n;
+  const sd = Math.sqrt(out.reduce((a, v) => a + (v - m) ** 2, 0) / n) || 1;
+  return out.map((v) => (v - m) / sd);
+}
+
+function topDecileIdx(x, frac) {
+  return x.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0])
+    .slice(0, Math.floor(x.length * frac)).map((q) => q[1]);
+}
+
+export function example(kind) {
+  const y0 = realEvents();
+  const n = y0.length;
+  const r = xorshift(20260819);
+  let x, y = y0.slice();
+
+  if (kind === "real") {
+    // a modulation of known size written into the event times, exactly as
+    // inject_real does: the count is preserved, only the timing moves
+    x = smooth(n, 30, r);
+    const top = topDecileIdx(x, 0.2);
     const ev = [];
     for (let i = 0; i < n; i++) if (y[i]) ev.push(i);
-    for (let k = 0; k < Math.floor(ev.length * 0.25); k++) {
-      y[ev[k]] = 0;
+    const k = Math.floor(ev.length * 0.30);
+    for (let i = 0; i < k; i++) {
+      y[ev[Math.floor(r() * ev.length)]] = 0;
       y[top[Math.floor(r() * top.length)]] = 1;
     }
-  }
-  if (kind === "lookahead") {                 // predictor peeks forward
+
+  } else if (kind === "null") {
+    x = smooth(n, 30, r);
+    const k = 3000 + Math.floor(r() * 4000);
+    y = y0.map((_, i) => y0[(((i - k) % n) + n) % n]);
+
+  } else if (kind === "calendar") {
+    // a deterministic function of the date, against the untouched catalogue
+    const period = 700 + r() * 2000, phase = r() * 6.283;
+    x = Array.from({ length: n }, (_, i) =>
+      Math.sin((2 * Math.PI * i) / period + phase)
+      + 0.3 * Math.sin((4 * Math.PI * i) / (period * 1.7) + phase)
+      + (r() - 0.5) * 0.3);
+
+  } else if (kind === "lookahead") {
+    // the predictor window reaches forward across the event
+    const k = 6 + Math.floor(r() * 12);
+    x = new Array(n);
     for (let i = 0; i < n; i++) {
       let s = 0;
-      for (let j = i; j < Math.min(i + 8, n); j++) s += y[j];
-      x[i] = s / 8 + (r() - 0.5) * 0.8;
+      for (let j = i; j < Math.min(i + k, n); j++) s += y0[j];
+      x[i] = s / k + (r() - 0.5) * 1.4;
+    }
+
+  } else {                                    // cluster
+    x = smooth(n, 60, r);
+    const idx = topDecileIdx(x, 0.3);
+    const hot = new Set(idx);
+    y = new Array(n).fill(0);
+    const main = [];
+    for (let i = 0; i < n; i++) if (r() < 0.02) { y[i] = 1; main.push(i); }
+    for (const mIdx of main) {
+      if (!hot.has(mIdx)) continue;
+      for (let d = 1; d < 40; d++)
+        if (r() < 1 / Math.pow(d, 0.75) && mIdx + d < n) y[mIdx + d] = 1;
     }
   }
   return x.map((v, i) => `${v.toFixed(5)},${y[i]}`).join("\n");
@@ -275,6 +328,16 @@ async function run() {
     const m = await model();
     const { vector, detail } = fingerprint(x, y);
     render(m, vector, detail);
+  } catch (err) {
+    // Without this the page kept the "fingerprinting" notice forever and gave
+    // the reader nothing to act on. A failure has to say what failed.
+    $("out").innerHTML = `<div class="verdict artefact">
+      <h4>The audit could not finish</h4>
+      <p>${String(err && err.message ? err.message : err)}</p>
+      <p class="note">If this followed an update, a hard reload clears a stale
+      copy of the model bundle. Otherwise the browser console carries the full
+      trace.</p></div>`;
+    console.error(err);
   } finally {
     $("run").disabled = false;
   }

@@ -103,13 +103,36 @@ function roll(y, k) {
   return out;
 }
 
+/* The statistic for a shifted series, without building the shifted series.
+ * Rolling allocated an array per replicate and then cost one pass per decile;
+ * this reads through the offset in a single pass and gives the same number. */
+function shiftedStatistic(idx, y, k, base) {
+  const n = y.length;
+  const sum = new Float64Array(NDEC), cnt = new Float64Array(NDEC);
+  for (let i = 0; i < n; i++) {
+    const b = idx[i];
+    let j = i - k;
+    if (j < 0) j += n; else if (j >= n) j -= n;
+    sum[b] += y[j];
+    cnt[b]++;
+  }
+  let best = NaN;
+  for (let b = 0; b < NDEC; b++) {
+    if (!cnt[b]) continue;
+    const d = Math.abs(sum[b] / cnt[b] - base) / base;
+    if (!(best >= d)) best = d;
+  }
+  return best;
+}
+
 function shiftNull(x, y, n, seed) {
   const r = new XorShift32(seed);
   const idx = decileIndex(x);
+  const base = mean(y);
   const out = [];
   for (let i = 0; i < n; i++) {
     const k = MIN_SHIFT + r.below(y.length - 2 * MIN_SHIFT);
-    out.push(decileStatistic(x, roll(y, k), idx));
+    out.push(base > 0 ? shiftedStatistic(idx, y, k, base) : NaN);
   }
   return out;
 }
@@ -292,24 +315,59 @@ function declusterPair(x, y, window = 5, n = 100) {
   return [z(y), z(yd)];
 }
 
+/* In-place iterative radix-2 transform. The naive form is quadratic, which on
+ * twenty thousand days is two hundred million trigonometric evaluations and
+ * enough to freeze the page on its own. */
+function fftPower(re, im) {
+  const n = re.length;
+  for (let i = 1, j = 0; i < n; i++) {
+    let bit = n >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      [re[i], re[j]] = [re[j], re[i]];
+      [im[i], im[j]] = [im[j], im[i]];
+    }
+  }
+  for (let len = 2; len <= n; len <<= 1) {
+    const ang = (-2 * Math.PI) / len;
+    const wr = Math.cos(ang), wi = Math.sin(ang);
+    for (let i = 0; i < n; i += len) {
+      let cr = 1, ci = 0;
+      for (let k = 0; k < len / 2; k++) {
+        const ur = re[i + k], ui = im[i + k];
+        const vr = re[i + k + len / 2] * cr - im[i + k + len / 2] * ci;
+        const vi = re[i + k + len / 2] * ci + im[i + k + len / 2] * cr;
+        re[i + k] = ur + vr; im[i + k] = ui + vi;
+        re[i + k + len / 2] = ur - vr; im[i + k + len / 2] = ui - vi;
+        const nr = cr * wr - ci * wi;
+        ci = cr * wi + ci * wr; cr = nr;
+      }
+    }
+  }
+}
+
 function spectralConcentration(x, top = 5) {
   const xx = finite(x);
   if (xx.length < 64) return NaN;
-  const m = mean(xx), n = xx.length;
-  const half = Math.floor(n / 2);
-  const p = [];
-  for (let k = 1; k <= half; k++) {
-    let re = 0, im = 0;
-    for (let i = 0; i < n; i++) {
-      const a = (-2 * Math.PI * k * i) / n;
-      re += (xx[i] - m) * Math.cos(a);
-      im += (xx[i] - m) * Math.sin(a);
-    }
-    p.push(re * re + im * im);
-  }
+  // The largest power-of-two prefix, so a radix-2 transform is exact here and
+  // the same truncation is applied in Python. Zero-padding instead would
+  // change the frequency grid and with it the value, and the model was trained
+  // on the Python number.
+  let n = 1;
+  while (n * 2 <= xx.length) n *= 2;
+  const seg = xx.slice(0, n);
+  const m = mean(seg);
+  const re = new Float64Array(n), im = new Float64Array(n);
+  for (let i = 0; i < n; i++) re[i] = seg[i] - m;
+  fftPower(re, im);
+  const half = n >> 1;
+  const p = new Array(half);
+  for (let k = 1; k <= half; k++) p[k - 1] = re[k] * re[k] + im[k] * im[k];
   const tot = p.reduce((a, v) => a + v, 0);
   if (tot <= 0) return NaN;
-  const s = p.slice().sort((a, b) => b - a).slice(0, top).reduce((a, v) => a + v, 0);
+  const s = p.slice().sort((a, b) => b - a).slice(0, top)
+    .reduce((a, v) => a + v, 0);
   return s / tot;
 }
 
