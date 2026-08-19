@@ -18,6 +18,11 @@
   </nav>
 </header>
 
+<section class="sig">
+  <canvas id="sig" aria-label="The signature of each mechanism across the fifteen diagnostic axes."></canvas>
+  <div class="sig-copy"><div class="sig-label" id="siglabel"></div></div>
+</section>
+
 <h1>Audit a precursor claim</h1>
 
 <p class="lede">A p-value cannot tell a real association from an artefact,
@@ -46,6 +51,15 @@ against reference scales measured on a real study.</p>
 </div>
 
 <div id="out"></div>
+
+<h2>The seven explanations it weighs</h2>
+
+<p>A p-value cannot tell these apart, because most of them produce small ones.
+What separates them is how the result behaves when the analysis is perturbed,
+and each leaves a different signature across the battery. The animation above
+cycles through those signatures as they were measured on the training set.</p>
+
+<div class="mechs" id="mechs"></div>
 
 <h2>What it is doing</h2>
 
@@ -124,5 +138,13 @@ build rather than shipping a silent disagreement.</p>
 
 </div>
 <script type="module" src="audit.js"></script>
+<script type="module">
+  import { mountBattery } from "./battery.js";
+  import { mountMechs } from "./audit.js";
+  const m = await (await fetch("audit_model.json")).json();
+  mountBattery(document.getElementById("sig"),
+               document.getElementById("siglabel"), m);
+  mountMechs(document.getElementById("mechs"));
+</script>
 </body>
 </html>

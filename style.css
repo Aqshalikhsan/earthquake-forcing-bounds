@@ -215,3 +215,50 @@ footer a { color: var(--grey); }
   .ladder-row { grid-template-columns: 1fr 84px; }
   .ladder-bar { grid-column: 1 / -1; order: 3; }
 }
+
+/* ========================================================= audit page hero */
+.sig { margin: 0 -24px 10px; background:
+       radial-gradient(120% 100% at 50% 0%, #16203a 0%, #0a0d16 65%);
+       border-bottom: 1px solid #1e2740; overflow: hidden; }
+.sig canvas { display: block; width: 100%; height: 190px; }
+.sig-copy { padding: 0 24px 16px; }
+.sig-label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+             color: #cfd8e8; font-size: 14px; min-height: 22px; }
+.sig-label strong { color: #fff; font-weight: 600; }
+.sig-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block;
+           transform: translateY(-1px); }
+
+/* ==================================================== mechanism reference */
+.mechs { display: grid; gap: 1px; background: var(--rule);
+         border: 1px solid var(--rule); margin: 20px 0 30px;
+         grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); }
+.mech { background: var(--panel); padding: 14px 16px 15px; }
+.mech .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block;
+             margin-right: 7px; transform: translateY(-1px); }
+.mech h4 { font: 600 14px/1.35 var(--sans); margin: 0 0 4px; }
+.mech p { font-size: 13px; color: var(--ink-soft); margin: 0; max-width: none; }
+
+/* ============================================================ result plot */
+.prob { display: grid; grid-template-columns: 190px 1fr 58px; gap: 10px;
+        align-items: center; padding: 4px 0; font-size: 13.5px; }
+.prob-bar { height: 8px; background: var(--band); }
+.prob-bar > i { display: block; height: 100%; background: var(--blue); width: 0;
+                transition: width .5s cubic-bezier(.2,.7,.3,1); }
+.prob.inset .prob-bar > i { background: var(--green); }
+.prob-val { font-family: var(--mono); text-align: right; color: var(--ink-soft);
+            font-variant-numeric: tabular-nums; }
+
+.axis { padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.axis:last-child { border-bottom: 0; }
+.axis-head { display: flex; justify-content: space-between; gap: 12px;
+             font-size: 13.5px; }
+.axis-head b { font-weight: 600; }
+.axis-head .v { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.axis-line { position: relative; height: 24px; margin-top: 3px; }
+.axis-line .rail { position: absolute; left: 0; right: 0; top: 11px; height: 2px;
+                   background: var(--band); }
+.axis-line .mk { position: absolute; top: 6px; width: 2px; height: 12px;
+                 background: var(--grey); opacity: .55; }
+.axis-line .me { position: absolute; top: 3px; width: 3px; height: 18px;
+                 background: var(--blue); }
+.axis-note { font-size: 12.5px; color: var(--grey); }

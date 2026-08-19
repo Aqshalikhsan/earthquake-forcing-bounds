@@ -8,6 +8,24 @@
  */
 
 import { fingerprint, FEATURES, checkRandom } from "./fingerprint.js";
+import { axisScale } from "./battery.js";
+
+const COLOUR = {
+  REAL: "#2f6b4a", NULL: "#8a8a8a", CALENDAR: "#b8862f",
+  CLUSTER: "#b02a2a", LOOKAHEAD: "#8e4a99", SEARCH: "#2a5d9e",
+  GROWTH: "#2f7d7d"
+};
+
+/* The seven explanations, listed on the page so a reader knows what the tool
+ * is choosing between before they run anything. */
+export function mountMechs(el) {
+  if (!el) return;
+  el.innerHTML = Object.entries(CLASS_TEXT).map(([c, [name, why]]) => `
+    <div class="mech">
+      <h4><span class="dot" style="background:${COLOUR[c]}"></span>${name}</h4>
+      <p>${why}</p>
+    </div>`).join("");
+}
 
 const CLASS_TEXT = {
   REAL: ["Consistent with a real association",
@@ -188,30 +206,49 @@ function render(m, vec, detail) {
 
   const order = m.classes.map((c, j) => [c, p[j]]).sort((a, b) => b[1] - a[1]);
 
+  const probs = order.map(([c, v]) => `
+    <div class="prob${set.includes(c) ? " inset" : ""}">
+      <div><span class="dot" style="display:inline-block;width:9px;height:9px;
+        border-radius:50%;margin-right:7px;background:${COLOUR[c]}"></span>${CLASS_TEXT[c][0]}</div>
+      <div class="prob-bar"><i data-w="${(100 * v).toFixed(1)}"></i></div>
+      <div class="prob-val">${(100 * v).toFixed(1)}%</div>
+    </div>`).join("");
+
+  // each axis as a position between the mechanisms rather than a bare number,
+  // so the reader can see which signature the claim is nearest on that axis
+  const axes = FEATURES.map((k, j) => {
+    const v = detail[k];
+    const sc = axisScale(m, j, v);
+    const marks = sc ? sc.marks.map((q) =>
+      `<span class="mk" style="left:${q.pct.toFixed(1)}%;background:${COLOUR[q.c]}"
+         title="${CLASS_TEXT[q.c][0]}"></span>`).join("") : "";
+    return `<div class="axis">
+      <div class="axis-head"><b>${AXIS_TEXT[k][0]}</b>
+        <span class="v">${Number.isFinite(v) ? v.toFixed(4) : "n/a"}</span></div>
+      ${sc ? `<div class="axis-line"><span class="rail"></span>${marks}
+        <span class="me" style="left:${sc.pct.toFixed(1)}%"></span></div>` : ""}
+      <div class="axis-note">${AXIS_TEXT[k][1] || "&nbsp;"}</div>
+    </div>`;
+  }).join("");
+
   $("out").innerHTML = `
     <div class="verdict ${cls}"><h4>${head}</h4><p>${body}</p></div>
 
     <h3>Consistent labels at the stated confidence</h3>
-    <p class="note">REAL is held to 99% coverage and every artefact class to
-    90%, on purpose. The tool can refute far more confidently than it can
-    endorse, so a set containing only artefact labels is strong evidence while
-    a set containing REAL is weak evidence of anything.</p>
-    <div class="scroll"><table>
-      <thead><tr><th>Class</th><th class="n">Model probability</th><th>In the set</th></tr></thead>
-      <tbody>${order.map(([c, v]) => `
-        <tr><td>${CLASS_TEXT[c][0]}</td><td class="n">${(100 * v).toFixed(1)}%</td>
-        <td>${set.includes(c) ? "<span class=\"tag null\">yes</span>" : ""}</td></tr>`).join("")}
-      </tbody></table></div>
+    <p class="note">Green bars are the labels inside the conformal set. REAL is
+    held to 99% coverage and every artefact class to 90%, on purpose: the tool
+    can refute far more confidently than it can endorse, so a set of artefact
+    labels alone is strong evidence while a set containing REAL is weak
+    evidence of anything.</p>
+    ${probs}
 
-    <h3>The fingerprint</h3>
-    <div class="scroll"><table>
-      <thead><tr><th>Axis</th><th class="n">Value</th><th>Reference scale</th></tr></thead>
-      <tbody>${FEATURES.map((k) => {
-        const v = detail[k];
-        return `<tr><td>${AXIS_TEXT[k][0]}</td>
-          <td class="n">${Number.isFinite(v) ? v.toFixed(4) : "n/a"}</td>
-          <td class="note">${AXIS_TEXT[k][1]}</td></tr>`;
-      }).join("")}</tbody></table></div>`;
+    <h3>The fingerprint, against each mechanism's own signature</h3>
+    <p class="note">The blue mark is your claim. The coloured ticks are where
+    each mechanism sits on that axis, taken from the training centroids.</p>
+    <div class="panel">${axes}</div>`;
+
+  requestAnimationFrame(() => $("out").querySelectorAll(".prob-bar > i")
+    .forEach((b) => { b.style.width = b.dataset.w + "%"; }));
 }
 
 /* ------------------------------------------------------------------ wire */
