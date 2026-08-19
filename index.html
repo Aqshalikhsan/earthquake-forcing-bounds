@@ -10,7 +10,7 @@
 <body>
 <div class="wrap">
 
-<header>
+<header style="border:0;margin:0;padding:22px 0 14px">
   <nav>
     <a href="./" aria-current="page">Results</a>
     <a href="audit.html">Audit tool</a>
@@ -18,7 +18,14 @@
   </nav>
 </header>
 
-<h1>Thirteen external forcing hypotheses, tested in one calibrated framework</h1>
+<section class="hero">
+  <canvas id="sky" aria-label="The candidate forcings, placed by the stress each one exerts on a fault."></canvas>
+  <div class="hero-copy">
+    <div class="kicker">Calibrated bounds</div>
+    <h1>Thirteen external forcing hypotheses, tested in one framework</h1>
+    <div class="sky-readout" id="skyout"></div>
+  </div>
+</section>
 
 <p class="lede">Claims that lunar phase, planetary geometry, solar activity or
 ionospheric anomalies anticipate earthquakes are tested one at a time, on
@@ -30,6 +37,22 @@ correction are held fixed, and only the forcing changes.</p>
 <p>The deliverable is not a verdict but an <strong>upper bound</strong> for each
 hypothesis: a number stating how large an effect would have been detected, so
 that a null becomes a constraint rather than an absence.</p>
+
+<h2>The candidates</h2>
+
+<p>Every one of these has been offered as a way to anticipate earthquakes.
+Each carries the corrected <em>p</em> this framework returns for it, at the
+resolution the hypothesis actually has.</p>
+
+<div class="cards" id="cards"></div>
+
+<h2>What each one is worth in pascals</h2>
+
+<p>The result is set by the size of the forcing, not by the model. Bars are
+log-scaled because the range spans thirteen orders of magnitude. A neighbouring
+earthquake pushes roughly a billion times harder than Venus.</p>
+
+<div class="ladder" id="ladder"></div>
 
 <h2>What the thirteen candidates return</h2>
 
@@ -195,5 +218,12 @@ run against any candidate predictor rather than only the thirteen here.</p>
 </footer>
 
 </div>
+<script type="module">
+  import { mountSky } from "./sky.js";
+  import { mountCards, mountLadder } from "./cards.js";
+  mountSky(document.getElementById("sky"), document.getElementById("skyout"));
+  mountCards(document.getElementById("cards"));
+  mountLadder(document.getElementById("ladder"));
+</script>
 </body>
 </html>

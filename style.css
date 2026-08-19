@@ -151,3 +151,67 @@ button:focus-visible, a:focus-visible, textarea:focus-visible {
 footer { border-top: 1px solid var(--rule); margin-top: 64px; padding-top: 20px;
          font-size: 13.5px; color: var(--grey); }
 footer a { color: var(--grey); }
+
+/* ============================================================== hero sky */
+/* The hero is always dark because it is a sky. Everything below follows the
+   visitor's theme; this one section commits, so its palette is literal. */
+
+.hero {
+  position: relative;
+  margin: 0 -24px 8px;
+  background: radial-gradient(120% 90% at 50% 0%, #16203a 0%, #0a0d16 62%);
+  overflow: hidden;
+  border-bottom: 1px solid #1e2740;
+}
+.hero canvas { display: block; width: 100%; height: 340px; }
+@media (max-width: 640px) { .hero canvas { height: 260px; } }
+
+.hero-copy {
+  position: absolute; inset: auto 0 0 0; padding: 0 24px 18px;
+  pointer-events: none;
+}
+.hero h1 { color: #f2f4f8; margin: 0 0 6px; font-size: 31px;
+           text-shadow: 0 2px 22px rgba(0,0,0,.75); }
+.hero .kicker {
+  font: 600 11.5px/1 var(--sans); letter-spacing: .16em;
+  text-transform: uppercase; color: #8fa6cc; margin-bottom: 12px;
+}
+.sky-readout {
+  min-height: 44px; color: #cfd8e8; font-size: 14px;
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+}
+.sky-readout strong { color: #fff; font-weight: 600; }
+.sky-pa { font-family: var(--mono); color: #ffd79a; font-size: 15px;
+          font-variant-numeric: tabular-nums; }
+.sky-note, .sky-hint { color: #8c9ab4; font-size: 13px; }
+.sky-hint { max-width: 56ch; }
+
+/* ========================================================= hypothesis cards */
+.cards { display: grid; gap: 1px; background: var(--rule);
+         border: 1px solid var(--rule); margin: 22px 0 30px;
+         grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.card { background: var(--panel); padding: 15px 16px 16px; }
+.card .glyph { display: block; margin-bottom: 9px; }
+.card h4 { font: 600 14px/1.35 var(--sans); margin: 0 0 3px; }
+.card .p { font-family: var(--mono); font-size: 19px;
+           font-variant-numeric: tabular-nums; color: var(--ink); }
+.card .p.hit { color: var(--green); }
+.card .sub { font-size: 12.5px; color: var(--grey); margin-top: 2px; }
+.card.ref { background: color-mix(in srgb, var(--green) 7%, var(--panel)); }
+
+/* =========================================================== stress ladder */
+.ladder { margin: 22px 0 30px; }
+.ladder-row { display: grid; grid-template-columns: 200px 1fr 108px;
+              gap: 12px; align-items: center; padding: 5px 0;
+              border-bottom: 1px solid var(--rule); font-size: 13.5px; }
+.ladder-row:last-child { border-bottom: 0; }
+.ladder-bar { height: 9px; background: var(--band); position: relative; }
+.ladder-bar > i { display: block; height: 100%; background: var(--blue);
+                  width: 0; transition: width 1.1s cubic-bezier(.2,.7,.3,1); }
+.ladder-row.warm .ladder-bar > i { background: var(--red); }
+.ladder-val { font-family: var(--mono); text-align: right; color: var(--ink-soft);
+              font-variant-numeric: tabular-nums; }
+@media (max-width: 620px) {
+  .ladder-row { grid-template-columns: 1fr 84px; }
+  .ladder-bar { grid-column: 1 / -1; order: 3; }
+}
