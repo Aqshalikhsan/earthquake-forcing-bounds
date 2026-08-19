@@ -139,12 +139,22 @@ build rather than shipping a silent disagreement.</p>
 </div>
 <script type="module" src="audit.js"></script>
 <script type="module">
-  import { mountBattery } from "./battery.js";
-  import { mountMechs } from "./audit.js";
-  const m = await (await fetch("audit_model.json")).json();
-  mountBattery(document.getElementById("sig"),
-               document.getElementById("siglabel"), m);
-  mountMechs(document.getElementById("mechs"));
+  // Decoration must never take the tool down with it, so this whole block is
+  // isolated: if the model cannot be fetched or is an older cached bundle, the
+  // hero simply does not appear and the audit still runs.
+  try {
+    const { mountBattery } = await import("./battery.js");
+    const { mountMechs } = await import("./audit.js");
+    const r = await fetch("audit_model.json", { cache: "no-cache" });
+    const m = await r.json();
+    mountBattery(document.getElementById("sig"),
+                 document.getElementById("siglabel"), m);
+    mountMechs(document.getElementById("mechs"));
+  } catch (e) {
+    const sig = document.querySelector(".sig");
+    if (sig) sig.hidden = true;
+    console.warn("hero skipped:", e);
+  }
 </script>
 </body>
 </html>

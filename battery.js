@@ -31,6 +31,12 @@ const ORDER = ["REAL", "CALENDAR", "CLUSTER", "LOOKAHEAD", "SEARCH",
                "GROWTH", "NULL"];
 
 export function mountBattery(canvas, label, model) {
+  // An older cached bundle has no centroids. Hide the panel instead of
+  // throwing, which would take the whole module down and with it the tool.
+  if (!canvas || !model || !model.centroid) {
+    if (canvas && canvas.parentElement) canvas.parentElement.hidden = true;
+    return;
+  }
   const ctx = canvas.getContext("2d");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const names = model.features;
@@ -124,6 +130,7 @@ export function mountBattery(canvas, label, model) {
 /* Where one measured value sits between the mechanisms, as a position on a
  * line rather than a number the reader has to rank in their head. */
 export function axisScale(model, j, value) {
+  if (!model || !model.centroid) return null;
   const vals = model.classes
     .map((c) => ({ c, v: model.centroid[c][j] }))
     .filter((q) => q.v !== null && Number.isFinite(q.v));

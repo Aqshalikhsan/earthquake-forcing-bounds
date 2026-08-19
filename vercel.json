@@ -2,8 +2,13 @@
   "cleanUrls": true,
   "headers": [
     {
+      "comment": "The model is revalidated on every load. It was marked immutable once, and a later change to it left browsers serving a stale bundle that the page then failed on. Figures are content-stable and may be cached hard.",
       "source": "/audit_model.json",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/figures/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
     }
   ]
 }
