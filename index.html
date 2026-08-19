@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calibrated bounds on external forcing of earthquakes</title>
+<meta name="description" content="Thirteen external forcing hypotheses for earthquake occurrence, tested in one calibrated framework with positive controls and per-hypothesis upper bounds.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a href="./" aria-current="page">Results</a>
+    <a href="audit.html">Audit tool</a>
+    <a href="https://github.com/Aqshalikhsan/earthquake-forcing-bounds">Code</a>
+  </nav>
+</header>
+
+<h1>Thirteen external forcing hypotheses, tested in one calibrated framework</h1>
+
+<p class="lede">Claims that lunar phase, planetary geometry, solar activity or
+ionospheric anomalies anticipate earthquakes are tested one at a time, on
+different catalogues, against uncalibrated nulls. The results cannot be
+compared, and a null result cannot be told apart from a test too weak to have
+seen anything. Here the catalogue, the statistic, the null and the multiplicity
+correction are held fixed, and only the forcing changes.</p>
+
+<p>The deliverable is not a verdict but an <strong>upper bound</strong> for each
+hypothesis: a number stating how large an effect would have been detected, so
+that a null becomes a constraint rather than an absence.</p>
+
+<h2>What the thirteen candidates return</h2>
+
+<p>Modulation is the largest deviation of any decile's earthquake rate from the
+overall rate, so it reads directly as a percentage. <em>Detectable</em> is the
+95th percentile of the max-statistic null: the smallest effect that family
+could have found. Every <em>p</em> is corrected within family for the number of
+variables searched.</p>
+
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Candidate</th><th class="n">Vars</th><th class="n">Measured</th>
+  <th class="n">Detectable</th><th class="n">p</th><th>Result</th>
+</tr></thead>
+<tbody>
+<tr><td>Lunar phase and geometry</td><td class="n">13</td><td class="n">2.57%</td><td class="n">3.41%</td><td class="n">0.615</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Tidal stress, phase</td><td class="n">8</td><td class="n">3.01%</td><td class="n">2.97%</td><td class="n">0.788</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Tidal stress, size-frequency</td><td class="n">1</td><td class="n">n/a</td><td class="n">n/a</td><td class="n">0.676</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Planetary geometry</td><td class="n">80</td><td class="n">5.60%</td><td class="n">9.03%</td><td class="n">0.590</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Solar activity</td><td class="n">9</td><td class="n">3.38%</td><td class="n">5.97%</td><td class="n">0.843</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Hydrological loading</td><td class="n">8</td><td class="n">4.74%</td><td class="n">7.82%</td><td class="n">0.057</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Earth rotation</td><td class="n">5</td><td class="n">6.69%</td><td class="n">8.88%</td><td class="n">0.460</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Atmospheric loading</td><td class="n">4</td><td class="n">2.92%</td><td class="n">3.10%</td><td class="n">0.107</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Ionospheric TEC</td><td class="n">3</td><td class="n">2.70%</td><td class="n">4.84%</td><td class="n">0.903</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Outgoing longwave radiation</td><td class="n">3</td><td class="n">n/a</td><td class="n">n/a</td><td class="n">0.173</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Near-surface air temperature</td><td class="n">3</td><td class="n">n/a</td><td class="n">n/a</td><td class="n">0.253</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Precipitable water</td><td class="n">3</td><td class="n">n/a</td><td class="n">n/a</td><td class="n">0.890</td><td><span class="tag null">null</span></td></tr>
+<tr><td>Soil-gas radon</td><td class="n">0</td><td class="n">n/a</td><td class="n">n/a</td><td class="n">n/a</td><td><span class="tag gap">no data</span></td></tr>
+<tr class="ref"><td>Recent seismicity (ETAS reference)</td><td class="n">4</td><td class="n">9.19%</td><td class="n">5.80%</td><td class="n">0.005</td><td><span class="tag hit">detected</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="note">Tidal phase measures 3.01% against a 2.97% threshold and returns
+p = 0.048 when evaluated at a single reference site. Recomputed on each
+earthquake's own fault plane from its moment tensor it returns p = 0.788, which
+is the value shown. Raising the resolution destroyed the apparent signal rather
+than creating one. Radon is a gap in the available data rather than a result:
+no global archive of soil-gas monitoring exists.</p>
+
+<figure>
+  <img src="figures/fig_ladder_bounds.png" alt="Stress amplitudes of the candidate forcings against the stress required to fail intact rock, and measured modulation against detectable modulation for each family.">
+  <figcaption>Left: what each forcing is worth in pascals, against the roughly
+  10 MPa needed to fail intact rock. Right: what each family measured against
+  what it could have detected. No family clears its own threshold.</figcaption>
+</figure>
+
+<h2>Two findings that matter more than any single bound</h2>
+
+<h3>Averaging a spatial field discards almost all of it</h3>
+
+<p>Four of the candidates are spatial fields: atmospheric pressure,
+hydrological load, ionospheric electron content, and tidal stress. Standard
+practice, and our own first approach, reduces such a field to one number per
+day. The anomaly above an epicentre correlates with that daily global mean at
+<span class="num">r = 0.13</span>, so the global variable carries under
+<strong>2%</strong> of the local variation.</p>
+
+<p>An injection experiment turns that into detection power. A triggering effect
+of known size is written into the real pressure field, earthquake times are
+redrawn to follow it, and both designs are asked to recover it under the same
+null. The per-event design finds a 5% local modulation every time; the global
+design needs 40 to 80%.</p>
+
+<figure>
+  <img src="figures/fig_resolution.png" alt="Variance retained when a spatial field is reduced to one number per day, and the detection rate of the per-event and global designs against injected modulation size.">
+  <figcaption>A null obtained from a globally averaged field bounds the design,
+  not the hypothesis.</figcaption>
+</figure>
+
+<h3>Validation design, not physics, explains the published metrics</h3>
+
+<p>Learned against controls matched on grid cell and season, no block of
+forcings ranks an earthquake's real day above the ten candidate days it was
+matched against more often than chance. Recent seismicity, in the same folds
+with the same model, reaches three times chance.</p>
+
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Feature block</th><th class="n">Real day ranked first</th><th class="n">p</th>
+  <th class="n">AUC</th><th class="n">Change from the split alone</th>
+</tr></thead>
+<tbody>
+<tr><td>Local fields</td><td class="n">6.1%</td><td class="n">0.996</td><td class="n">0.4616</td><td class="n">+0.065</td></tr>
+<tr><td>Local fields plus tidal</td><td class="n">6.3%</td><td class="n">0.991</td><td class="n">0.4633</td><td class="n">+0.049</td></tr>
+<tr><td>Global daily bank</td><td class="n">0.0%</td><td class="n">1.000</td><td class="n">0.3228</td><td class="n">+0.208</td></tr>
+<tr><td>All forcings</td><td class="n">0.0%</td><td class="n">1.000</td><td class="n">0.3234</td><td class="n">+0.207</td></tr>
+<tr class="ref"><td>Recent seismicity</td><td class="n">31.0%</td><td class="n">&lt;0.001</td><td class="n">0.6222</td><td class="n">&minus;0.008</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The last column is the useful one. On identical rows and an identical model,
+the seismicity reference moves by 0.008 AUC between chronological and random
+validation; the forcing bank moves by 0.208. Ridge regression recovers a day's
+date from the forcing bank at <span class="num">R² = 0.99</span>, which is the
+mechanism: under a random split the model locates a test day in time and
+recalls the local rate. What it learns is the calendar.</p>
+
+<figure>
+  <img src="figures/fig_ml_perevent.png" alt="Ranking inside the matched pool, sensitivity to the validation split, the positive control curve, and each field on its own.">
+  <figcaption>Chance is 10.3%: of the eleven days an earthquake could have
+  fallen on, at the same place and in the same season, how often does the model
+  rank the real one first?</figcaption>
+</figure>
+
+<h2>Why the nulls are believable</h2>
+
+<p>A framework that can never say yes says nothing when it says no. Planted
+modulations of 10 to 20% are recovered in all eight families at a false-alarm
+rate of 0 to 5%. In the machine learning design, an injected 20% is recovered
+at p = 0.001 and 10% is not, so that design rules out any effect re-timing more
+than about a fifth of earthquakes onto extreme field days. It is looser than
+the resampling bound of 5%, which is why the learner is reported as a
+cross-check rather than as the sharper test.</p>
+
+<figure>
+  <img src="figures/fig_controls_skill.png" alt="Detection rate for planted modulations of known size, and probability gain against coverage for every method tested.">
+  <figcaption>Left: the framework recovering signals of known size, with the 0%
+  column as the false-alarm check. Right: what each method buys in probability
+  gain, against how much of the catalogue it covers.</figcaption>
+</figure>
+
+<h2>Six detections that did not survive</h2>
+
+<p>Four of them were ours. They are recorded because a framework that has never
+rejected its own candidate has not shown that it can.</p>
+
+<div class="scroll">
+<table>
+<thead><tr><th class="n">Apparent</th><th class="n">After</th><th>Cause</th></tr></thead>
+<tbody>
+<tr><td class="n">0.0515</td><td class="n">0.808</td><td>quartile V-test, failed quintile scaling</td></tr>
+<tr><td class="n">&lt;0.0001</td><td class="n">0.417&ndash;0.966</td><td>planetary Schuster test against an uncalibrated null</td></tr>
+<tr><td class="n">&lt;0.0001</td><td class="n">0.36</td><td>GRACE, co-seismic gravity inside the window</td></tr>
+<tr><td class="n">0.010</td><td class="n">0.347</td><td>GRACE, monthly average overlapping the event</td></tr>
+<tr><td class="n">0.025</td><td class="n">0.565</td><td>atmospheric level, failed split-half</td></tr>
+<tr><td class="n">0.048</td><td class="n">0.788</td><td>tidal phase at one site against each event's own fault plane</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Scope</h2>
+
+<p>These bounds constrain a global moment-tensor catalogue at moment magnitude
+5 to 6 over decades, at temporal scales of days to weeks. They do not address
+multi-year or decadal modulation, which a trend-preserving null cannot see.
+They do not address effects confined to particular fault mechanisms or regions,
+which a globally pooled test dilutes. And they do not exclude effects below the
+resolution of a global catalogue: a dense local network reaching magnitude 2 to
+3 measures b-values far better than is possible here, and GNSS crustal strain,
+which measures the quantity that actually loads a fault, was not available.</p>
+
+<p>The method behind these numbers is packaged as a
+<a href="audit.html">browser-based audit tool</a>, so the same battery can be
+run against any candidate predictor rather than only the thirteen here.</p>
+
+<footer>
+  Data, code and the saved output of every test are at
+  <a href="https://github.com/Aqshalikhsan/earthquake-forcing-bounds">github.com/Aqshalikhsan/earthquake-forcing-bounds</a>.
+</footer>
+
+</div>
+</body>
+</html>

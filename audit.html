@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit a precursor claim</title>
+<meta name="description" content="Fingerprint a candidate earthquake precursor against a battery of controlled perturbations, and read the answer as a calibrated conformal prediction set.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a href="./">Results</a>
+    <a href="audit.html" aria-current="page">Audit tool</a>
+    <a href="https://github.com/Aqshalikhsan/earthquake-forcing-bounds">Code</a>
+  </nav>
+</header>
+
+<h1>Audit a precursor claim</h1>
+
+<p class="lede">A p-value cannot tell a real association from an artefact,
+because several very different mechanisms produce the same p. What separates
+them is how the result <em>responds</em> when the analysis is perturbed. This
+tool applies fifteen such perturbations, and reads the pattern of responses
+against reference scales measured on a real study.</p>
+
+<div class="panel">
+  <h3>Your data</h3>
+  <p class="note">Two columns, one row per day, in time order: the candidate
+  predictor, then 1 on days an event occurred and 0 otherwise. Commas, tabs or
+  spaces. A header line is ignored. Nothing leaves your browser.</p>
+  <textarea id="data" spellcheck="false" placeholder="0.4213,0&#10;-1.0882,1&#10;0.7715,0&#10;..."></textarea>
+  <div class="row">
+    <button id="run">Run the audit</button>
+    <input type="file" id="file" accept=".csv,.txt,.tsv">
+  </div>
+  <div class="row">
+    <small>Or load an example:</small>
+    <button class="ghost" data-example="real">real signal</button>
+    <button class="ghost" data-example="null">no signal</button>
+    <button class="ghost" data-example="calendar">calendar leak</button>
+    <button class="ghost" data-example="lookahead">lookahead window</button>
+  </div>
+</div>
+
+<div id="out"></div>
+
+<h2>What it is doing</h2>
+
+<p>Each mechanism leaves a different signature across the battery. A real
+association barely moves when the validation split changes and survives
+thinning of clustered days. A calendar leak collapses under a chronological
+split, and its predictor reconstructs the date almost exactly. Aftershock
+clustering collapses when repeated days are thinned. A lookahead window
+collapses when sampling is made strictly causal. A search artefact collapses
+under a correction for everything that was tried.</p>
+
+<p>The reference scales come from measurement rather than assumption. In the
+study this was built for, the validation split moved a real seismicity signal
+by 0.008 AUC and a calendar-driven forcing bank by 0.208; declustering moved a
+tidal harmonic from p = 0.015 to p = 0.596; making a GRACE window causal moved
+it from p = 0.0000 to p = 0.36.</p>
+
+<h3>Why the answer is a set, not a verdict</h3>
+
+<p>The classifier is wrapped in conformal prediction, so its output is the set
+of explanations consistent with the fingerprint at a stated confidence. An
+ambiguous claim produces a large set and says so, instead of a point verdict
+that hides the ambiguity. Coverage is calibrated per class on held-out data and
+was verified over sixty repeated splits:</p>
+
+<div class="scroll">
+<table>
+<thead><tr><th>Class</th><th class="n">Nominal</th><th class="n">Measured coverage</th></tr></thead>
+<tbody>
+<tr><td>Real association</td><td class="n">0.99</td><td class="n">0.993 ± 0.003</td></tr>
+<tr><td>No association</td><td class="n">0.90</td><td class="n">0.920 ± 0.022</td></tr>
+<tr><td>Calendar leakage</td><td class="n">0.90</td><td class="n">0.898 ± 0.021</td></tr>
+<tr><td>Aftershock clustering</td><td class="n">0.90</td><td class="n">0.898 ± 0.026</td></tr>
+<tr><td>Lookahead window</td><td class="n">0.90</td><td class="n">0.927 ± 0.016</td></tr>
+<tr><td>Selection over candidates</td><td class="n">0.90</td><td class="n">0.911 ± 0.025</td></tr>
+<tr><td>Catalogue growth</td><td class="n">0.90</td><td class="n">0.904 ± 0.027</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The levels are deliberately unequal. A real association is held to 99%
+coverage and every artefact to 90%, which makes the tool reluctant to rule out
+a real effect and comparatively willing to name an artefact. An auditor should
+be able to refute much more confidently than it can endorse.</p>
+
+<h3>What it cannot do</h3>
+
+<p>It names an artefact confidently in about <strong>60%</strong> of cases
+where one is genuinely present, and falsely accuses a real association in
+<strong>4 cases in 1000</strong>. The remaining cases return an ambiguous set,
+which is informative in itself: a set of <em>real</em> and <em>clustering</em>
+tells you precisely which check to run next.</p>
+
+<p>It is trained on mechanisms planted into a real catalogue, so it recognises
+the artefacts it was shown and not ones nobody has thought of. A fingerprint
+far from anything in training gets no verdict at all rather than a confident
+guess. And a clean result is never evidence that a claim is true; it is only
+the absence of the specific defects tested here.</p>
+
+<h3>How the model gets into your browser</h3>
+
+<p>The classifier is a gradient-boosted ensemble of 1400 trees trained in
+Python and exported node by node. Two checks guard the port. The exported
+ensemble is re-evaluated with an independent implementation and compared
+against scikit-learn, which agrees to <span class="num">0</span> exactly. And
+the fifteen fingerprint axes, reimplemented here, are compared against the
+Python originals on test series, agreeing to
+<span class="num">2.7 × 10⁻¹¹</span> in the worst case. Both checks fail the
+build rather than shipping a silent disagreement.</p>
+
+<footer>
+  Method and results:
+  <a href="./">the study this was built from</a> &middot;
+  <a href="https://github.com/Aqshalikhsan/earthquake-forcing-bounds">source code</a>
+</footer>
+
+</div>
+<script type="module" src="audit.js"></script>
+</body>
+</html>
