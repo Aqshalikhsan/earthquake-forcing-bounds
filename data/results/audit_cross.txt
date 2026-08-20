@@ -1,0 +1,5 @@
+  smooth    fingerprinted
+  calendar  fingerprinted
+  trend     fingerprinted
+  wrote site\crosscheck.json  302 KB
+  now run:  node site/crosscheck.mjs

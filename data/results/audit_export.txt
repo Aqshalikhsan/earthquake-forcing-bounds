@@ -1,0 +1,6 @@
+  classes      ['CALENDAR', 'CLUSTER', 'GROWTH', 'LOOKAHEAD', 'NULL', 'REAL', 'SEARCH']
+  axes         15
+  boosting stages 200, trees 1400
+  max |sklearn - exported| = 0.000e+00
+  wrote data\results\audit_model.json  601 KB
+  wrote site\audit_model.json  601 KB

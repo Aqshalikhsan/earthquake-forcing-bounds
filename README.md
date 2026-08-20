@@ -161,6 +161,67 @@ Everything above is produced by `src/unified/ml_perevent.py` and written to
 `data/results/ml_features_mw6.0_c10.npz`, so the results can be reproduced
 without rebuilding the tidal block, which is the slow part.
 
+## Perturbation-response attribution
+
+The split-sensitivity check above generalises. A p-value cannot separate a real
+association from an artefact, because several mechanisms produce small ones.
+What separates them is how the result responds when the analysis is perturbed,
+and each mechanism responds differently: a calendar leak collapses under a
+chronological split, aftershock clustering collapses when repeated days are
+thinned, a lookahead window collapses when sampling is made causal.
+
+Fifteen such responses are computed from the only two things any claim of this
+kind has, a daily predictor and a daily event indicator. The resulting vector is
+a pure function of those two series, drawn from a fixed 32-bit generator, so it
+is reproducible outside this implementation.
+
+### Ground truth by construction
+
+No external forcing has ever been shown to anticipate earthquakes, so the real
+class is empty and a classifier trained on published claims would only learn to
+say no. Each mechanism is instead planted into the real catalogue at a
+controlled strength, giving seven classes: a real association, no association,
+and five named artefacts. A weak version of every other mechanism is layered on
+top of the dominant one, because a published claim rarely carries exactly one
+flaw.
+
+### Result
+
+Over 870 generated claims and sixty repeated splits:
+
+| quantity | value |
+| --- | --- |
+| attribution accuracy | 90.8% plus or minus 2.2 |
+| conformal coverage, real class, nominal 99% | 99.1% |
+| conformal coverage, each artefact class, nominal 90% | 89.7% to 93.0% |
+| artefact named, given a true artefact | 63.4% |
+| real association misnamed as artefact | 0.6% |
+
+The answer is a prediction set, not a label, so an ambiguous claim produces a
+larger set and says so. A fingerprint whose Mahalanobis distance exceeds the
+99th percentile of the training distribution is refused a verdict rather than
+forced into a class.
+
+### Files
+
+| file | what it does |
+| --- | --- |
+| `src/audit/fingerprint.py` | the fifteen axes, a pure function of the two series |
+| `src/audit/generate.py` | plants the seven mechanisms into the real catalogue |
+| `src/audit/train.py` | gradient-boosted trees, then class-conditional conformal calibration |
+| `src/audit/validate.py` | the sixty repeated splits behind the table above |
+| `src/audit/export.py` | exports the trees node by node; fails the build unless it matches scikit-learn exactly |
+| `src/audit/crosscheck.py` | checks the browser reimplementation against the Python original |
+
+The export and cross-check are gates, not reports. `export.py` refuses to write
+unless the exported model reproduces scikit-learn to 1e-9, and `crosscheck.py`
+exits non-zero if any axis disagrees with its browser twin by more than 1e-6.
+The worst observed disagreement is 2.7e-11.
+
+The method runs in a browser at
+[earthquake-forcing-bounds.vercel.app/audit](https://earthquake-forcing-bounds.vercel.app/audit).
+Nothing is uploaded; the model is small enough to evaluate client-side.
+
 ## Further documentation
 
 | document | contents |
