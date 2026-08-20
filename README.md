@@ -28,5 +28,9 @@ case.
 
 ## Editing
 
-Source lives in `site/` on `main` and is copied here. To change the site, edit
-there, then update this branch from that directory.
+The fingerprint port is generated from Python and verified against it, so it
+has a source of record: `src/audit/fingerprint.js` on `main`, checked by
+`src/audit/crosscheck.py` and `src/audit/crosscheck.mjs`. The copy here is a
+copy. The same holds for `audit_model.json`, written by `src/audit/export.py`.
+
+The pages and styling have no counterpart on `main` and are edited here.
