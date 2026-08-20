@@ -8,8 +8,11 @@ still lands somewhere in the model and still produces a confident-looking
 verdict.
 
 So the two are compared directly. This script writes a set of test series and
-their Python fingerprints, and site/crosscheck.mjs recomputes them in Node and
-reports the largest disagreement per axis. Run them in that order.
+their Python fingerprints, and crosscheck.mjs beside it recomputes them in Node
+and reports the largest disagreement per axis. Run them in that order.
+
+Both halves live here rather than with the deployed site, so that a clone of
+this repository can run the check. The copy the site serves is a copy.
 """
 
 from __future__ import annotations
@@ -55,12 +58,12 @@ def main():
             python=[None if not np.isfinite(v) else float(v) for v in vec],
         )
         print(f"  {name:<9} fingerprinted")
-    path = ROOT / "site" / "crosscheck.json"
+    path = _pl.Path(__file__).resolve().parent / "crosscheck.json"
     with io.open(path, "w", encoding="utf-8") as fh:
         json.dump(dict(features=FEATURES[:15], cases=out), fh)
     print(f"  wrote {path.relative_to(ROOT)}  "
           f"{path.stat().st_size/1024:.0f} KB")
-    print("  now run:  node site/crosscheck.mjs")
+    print("  now run:  node src/audit/crosscheck.mjs")
 
 
 if __name__ == "__main__":

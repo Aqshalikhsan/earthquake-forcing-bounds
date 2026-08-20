@@ -211,12 +211,22 @@ forced into a class.
 | `src/audit/train.py` | gradient-boosted trees, then class-conditional conformal calibration |
 | `src/audit/validate.py` | the sixty repeated splits behind the table above |
 | `src/audit/export.py` | exports the trees node by node; fails the build unless it matches scikit-learn exactly |
-| `src/audit/crosscheck.py` | checks the browser reimplementation against the Python original |
+| `src/audit/fingerprint.js` | the same fifteen axes in JavaScript, for the browser |
+| `src/audit/crosscheck.py` | writes test series and their Python fingerprints |
+| `src/audit/crosscheck.mjs` | recomputes them in Node and reports the worst disagreement |
 
 The export and cross-check are gates, not reports. `export.py` refuses to write
-unless the exported model reproduces scikit-learn to 1e-9, and `crosscheck.py`
-exits non-zero if any axis disagrees with its browser twin by more than 1e-6.
-The worst observed disagreement is 2.7e-11.
+unless the exported model reproduces scikit-learn to 1e-9, and the cross-check
+exits non-zero if any axis disagrees with its browser twin by more than 1e-6:
+
+```
+python src/audit/crosscheck.py
+node   src/audit/crosscheck.mjs
+```
+
+The worst observed disagreement is 2.7e-11, on `date_r2`, where the two
+languages use different least-squares algorithms. Every other axis agrees to
+within a few times machine epsilon.
 
 The method runs in a browser at
 [earthquake-forcing-bounds.vercel.app/audit](https://earthquake-forcing-bounds.vercel.app/audit).

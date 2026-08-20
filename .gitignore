@@ -14,6 +14,10 @@
 __pycache__/
 *.py[cod]
 
+# Written by src/audit/crosscheck.py for src/audit/crosscheck.mjs to read back.
+# It is 300 KB of regenerable test vectors, not a result.
+/src/audit/crosscheck.json
+
 # -----------------------------------------------------------------------------
 # GitHub refuses any single file larger than 100 MB. The seven files below are
 # over it, so a push containing them is rejected outright.
